@@ -8,10 +8,12 @@ import WhyChooseSection from './_components/WhyChooseSection'
 import Reviews from './_components/Reviews'
 import BeforeAfter from './_components/BeforeAndAfter'
 import FAQs from './_components/Faq'
+import HomePopup from '@/components/HomePopUp'
 
 const Home = () => {
   return (
     <div className='space-y-10'>
+      {/* <HomePopup /> */}
       <HeroSection />
       <Treatments />
       <Testimonials />
