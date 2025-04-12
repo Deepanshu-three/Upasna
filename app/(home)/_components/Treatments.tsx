@@ -25,37 +25,34 @@ const disease = [
 
 const Treatments = () => {
   return (
-    <div className="container mx-auto px-4 py-20">
-      <div className="text-center space-y-6">
-        <h1 className="text-3xl font-extrabold text-blue-600">Our Treatments</h1>
-        <h2 className="text-5xl font-bold">
+    <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-12">
+      {/* Header */}
+      <div className="text-center space-y-4">
+        <h1 className="text-2xl sm:text-3xl font-extrabold text-blue-600">Our Treatments</h1>
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold">
           Our Homeopathy Clinics can cure 100+ Diseases Naturally
         </h2>
-        <p className="text-gray-700 mx-auto text-xl">
-          At Afecto Homeopathy Clinics, we specialize in various homeopathic
-          treatments for Allergies, Bed-Wetting, Eczema, Female Disorders,
-          Hormonal Imbalance, Lifestyle Disorders, PCOD, Pediatrics, Skin/Hair
-          Problems, Thyroid, and many more. Get your personalized homeopathic
-          treatment today from the Afecto homeopathic clinic. Our remedies are
-          safe, non-toxic, and free from side effects. Our experienced
-          homeopathic doctors provide personalized treatments to address your
-          unique health concerns.
+        <p className="text-gray-700 mx-auto text-base sm:text-lg md:text-xl max-w-4xl">
+          At Afecto Homeopathy Clinics, we specialize in various homeopathic treatments for Allergies,
+          Bed-Wetting, Eczema, Female Disorders, Hormonal Imbalance, Lifestyle Disorders, PCOD, Pediatrics,
+          Skin/Hair Problems, Thyroid, and many more. Our remedies are safe, non-toxic, and free from side
+          effects. Get your personalized homeopathic treatment today.
         </p>
       </div>
 
       {/* Disease Cards Section */}
-      <div className="mt-8 flex justify-center gap-6 cursor-pointer">
+      <div className="flex flex-wrap justify-center gap-6">
         {disease.map((item, index) => (
           <div
             key={index}
-            className="bg-white shadow-lg rounded-xl p-4 w-48 text-center flex flex-col items-center transition-transform hover:scale-105"
+            className="bg-white shadow-md rounded-xl p-4 w-36 sm:w-40 md:w-44 lg:w-48 text-center flex flex-col items-center transition-transform hover:scale-105"
           >
             <img
               src={item.src}
               alt={item.name}
-              className="w-20 h-20 object-contain mb-3"
+              className="w-16 h-16 sm:w-20 sm:h-20 object-contain mb-3"
             />
-            <h3 className="text-lg font-semibold text-gray-800">{item.name}</h3>
+            <h3 className="text-sm sm:text-base font-semibold text-gray-800">{item.name}</h3>
           </div>
         ))}
       </div>

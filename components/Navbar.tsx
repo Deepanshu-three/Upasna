@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useSession } from "next-auth/react";
+import { usePathname } from "next/navigation"; // 👈 import this
 import { useState } from "react";
 import { Button } from "./ui/button";
 import {
@@ -21,93 +22,93 @@ import {
 } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 
+type navlinkType = {
+    link: string;
+    name: string;
+};
+
+const navlinks: navlinkType[] = [
+    {
+        link: "/",
+        name: "Home",
+    },
+    {
+        link: "/homoeopathy",
+        name: "Why Homoeopathy",
+    },
+    {
+        link: "/about",
+        name: "About",
+    },
+    {
+        link: "/testimoniols",
+        name: "Testimonials",
+    },
+    {
+        link: "/contact",
+        name: "Contact Us",
+    },
+    {
+        link: "/book-appoinment",
+        name: "Book Appoinment",
+    },
+];
+
 const Navbar = () => {
     const { data: session } = useSession();
+    const pathname = usePathname(); // 👈 get current route
     const [menuOpen, setMenuOpen] = useState(false);
-    const [aboutOpen, setAboutOpen] = useState(false);
 
     return (
-        <div className="bg-white shadow-sm">
-            <div className="flex items-center justify-between mx-auto max-w-7xl h-16 px-4">
-                {/* Logo */}
-                <Link href="/">
-                    <h1 className="text-2xl font-bold cursor-pointer">
-                        Upasna<span className="text-[#F83002]">Homoeo</span>
-                    </h1>
-                </Link>
-
-                {/* Mobile Toggle Button - Always Visible */}
-                <div className="md:hidden">
-                    <button
-                        className="text-black"
-                        onClick={() => setMenuOpen(!menuOpen)}
-                    >
-                        {menuOpen ? (
-                            <X className="w-6 h-6" />
-                        ) : (
-                            <Menu className="w-6 h-6" />
-                        )}
-                    </button>
+        <nav className="fixed top0 left-0 right-0 bg-white/90 backdrop:blur-sm z-50 border-b border-gray-100 shadow-sm">
+            <div className="w-full container mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8 md:h-20 h-16">
+                {/* logo */}
+                <div className="flex items-center gap-1 cursor-pointer">
+                    <div className="font-bold text-2xl ">Upasana</div>
+                    <div className="font-black text-2xl text-blue-500">
+                        Homoeo
+                    </div>
                 </div>
 
-                {/* Desktop Menu */}
-                <div className="hidden md:flex items-center gap-8">
-                    <ul className="flex font-medium items-center gap-5">
-                        <li>
-                            <Link
-                                href="/"
-                                className="flex font-bold text-xl items-center gap-1 px-4 py-2 rounded-lg cursor-pointer hover:bg-gray-200 hover:text-black transition-all duration-200"
-                            >
-                                 Home
-                            </Link>
-                        </li>
-                        <li>
-                            <DropdownMenu>
-                                <DropdownMenuTrigger className="flex text-xl font-bold items-center gap-1 cursor-pointer px-4 py-2 rounded-lg hover:bg-gray-200 hover:text-black transition-all duration-200">
-                                    About
-                                    
-                                </DropdownMenuTrigger>
-                                <DropdownMenuContent className="w-56">
-                                    {[
-                                        [
-                                            "Why Homeopathy",
-                                            "/about/why-homeopathy",
-                                        ],
-                                        ["About Us", "/about/us"],
-                                        ["Leadership", "/about/leadership"],
-                                        ["Our Doctors", "/about/doctors"],
-                                        [
-                                            "Doctor Videos",
-                                            "/about/doctor-videos",
-                                        ],
-                                        ["Testimonials", "/about/testimonials"],
-                                    ].map(([label, href]) => (
-                                        <DropdownMenuItem asChild key={href}>
-                                            <Link
-                                                href={href}
-                                                className="block hover:bg-blue-200/60 rounded-md px-4 py-2 cursor-pointer"
-                                            >
-                                                {label}
-                                            </Link>
-                                        </DropdownMenuItem>
-                                    ))}
-                                </DropdownMenuContent>
-                            </DropdownMenu>
-                        </li>
-                        <li>
-                            <Link
-                                href="/services"
-                                className="flex font-bold cursor-pointer text-xl items-center gap-1 px-4 py-2 rounded-lg hover:bg-gray-200 hover:text-black transition-all duration-200"
-                            >
-                               Services
-                            </Link>
-                        </li>
-                    </ul>
+                {/* mobile menu button */}
 
-                    {/* Auth Dropdown */}
-                    {session?.user ? (
+                <button
+                    className="lg:hidden p-2 cursor-pointer"
+                    onClick={() => setMenuOpen(!menuOpen)}
+                >
+                    {menuOpen ? (
+                        <X className="w-6 h-6" />
+                    ) : (
+                        <Menu className="h-6 w-6" />
+                    )}
+                </button>
+
+                {/* desktop nav */}
+                <div className="hidden lg:flex items-center gap-10">
+                    {navlinks.map((link, index) => (
+                        <Link
+                            key={index}
+                            href={link.link}
+                            className={`font-bold text-sm relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-blue-600 after:transition-all ${
+                                pathname === link.link
+                                    ? "text-blue-600 after:w-full"
+                                    : "text-gray-600 hover:text-gray-900"
+                            }`}
+                        >
+                            {link.name}
+                        </Link>
+                    ))}
+                </div>
+
+                {/* login and profile button */}
+                <div className="hidden lg:block">
+                    {!session?.user ? (
+                        <Link href={"/sign-in"}>
+                            <Button className="bg-blue-500">Sign In</Button>
+                        </Link>
+                    ) : (
                         <DropdownMenu>
-                            <DropdownMenuTrigger className="flex items-center gap-1 px-4 py-2 rounded-lg hover:bg-blue-200/60 hover:text-white transition-all duration-200">
+                            <DropdownMenuTrigger className="flex items-center gap-1 px-4 py-2 rounded-lg cursor-pointer transition-all duration-200">
                                 <img
                                     src={
                                         session.user.image ||
@@ -122,195 +123,117 @@ const Navbar = () => {
                                 <DropdownMenuItem asChild>
                                     <Link
                                         href="/profile"
-                                        className="block hover:bg-blue-200/60 rounded-md px-4 py-2"
+                                        className="flex items-center px-4 py-2 rounded-md hover:bg-blue-200/60"
                                     >
-                                        <User className="mr-2 w-5 h-5" />{" "}
+                                        <User className="mr-2 w-5 h-5" />
                                         Profile
                                     </Link>
                                 </DropdownMenuItem>
+
                                 <DropdownMenuItem asChild>
                                     <Link
                                         href="/api/auth/signout"
-                                        className="block hover:bg-blue-200/60 rounded-md px-4 py-2"
+                                        className="flex items-center text-red-500 hover:text-white hover:bg-red-500 px-4 py-2 rounded-md"
                                     >
-                                        <LogOut className="mr-2 w-5 h-5" />{" "}
+                                        <LogOut className="mr-2 w-5 h-5" />
                                         Logout
                                     </Link>
                                 </DropdownMenuItem>
                             </DropdownMenuContent>
                         </DropdownMenu>
-                    ) : (
-                        <Link href="/api/auth/signin">
-                            <Button className="text-white font-bold bg-blue-600 hover:bg-blue-700 transition-all duration-200 px-6 py-3">
-                                Sign-In
-                            </Button>
-                        </Link>
                     )}
                 </div>
             </div>
 
-            {/* Mobile Menu */}
-            <div className="-mt-10 md:hidden">
-                <AnimatePresence>
-                    {menuOpen && (
-                        <motion.div
-                            key="mobile-menu"
-                            initial={{ opacity: 0, x: -50 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            exit={{ opacity: 0, x: -50 }}
-                            transition={{ duration: 0.3 }}
-                            className="fixed top-18 left-0 w-4/5 h-full bg-gray-100 text-blue-900 px-6 py-6 z-50 overflow-y-auto rounded-r-xl shadow-xl backdrop-blur-md"
-                        >
-                            {/* Profile Section */}
-                            {session?.user && (
-                                <div className="flex items-center space-x-4 mb-8">
-                                    <img
-                                        src={
-                                            session.user.image ||
-                                            "/default-avatar.jpg"
-                                        }
-                                        alt="Profile"
-                                        className="w-16 h-16 rounded-full border-2 border-blue-300 shadow"
-                                    />
-                                    <div>
-                                        <p className="font-bold text-xl">
-                                            {session.user.name}
-                                        </p>
-                                        <p className="text-sm text-blue-600">
-                                            {session.user.email}
-                                        </p>
-                                    </div>
+            {/* mobile responsive */}
+            <AnimatePresence>
+                {menuOpen && (
+                    <motion.div
+                        key="mobile-menu"
+                        initial={{ opacity: 0, x: -50 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: -50 }}
+                        transition={{ duration: 0.3 }}
+                        className="fixed top-24 left-0 w-4/5 h-full bg-gray-100 text-blue-900 px-6 py-6 z-50 overflow-y-auto rounded-r-xl shadow-xl backdrop-blur-md"
+                    >
+                        {/* Profile Section */}
+                        {session?.user && (
+                            <div className="flex items-center space-x-4 mb-8">
+                                <img
+                                    src={
+                                        session.user.image ||
+                                        "/default-avatar.jpg"
+                                    }
+                                    alt="Profile"
+                                    className="w-16 h-16 rounded-full border-2 border-blue-300 shadow"
+                                />
+                                <div>
+                                    <p className="font-bold text-xl">
+                                        {session.user.name}
+                                    </p>
+                                    <p className="text-sm text-blue-600">
+                                        {session.user.email}
+                                    </p>
                                 </div>
-                            )}
+                            </div>
+                        )}
 
-                            {/* Mobile Menu Items */}
-                            <ul className="space-y-6 text-2xl font-semibold mt-2">
-                                <li>
+                        {/* Mobile Menu Items */}
+                        <ul className="space-y-6 text-2xl font-semibold mt-2">
+                            {navlinks.map((link, index) => (
+                                <li key={index}>
                                     <Link
-                                        href="/"
-                                        className="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-blue-200/60 transition-all duration-200"
+                                        href={link.link}
+                                        className={`flex items-center gap-3 px-4 py-2 rounded-lg transition-all duration-200 ${
+                                            pathname === link.link
+                                                ? "text-blue-600 bg-blue-100"
+                                                : "text-gray-700 hover:text-blue-600 hover:bg-blue-100"
+                                        }`}
+                                        
                                         onClick={() => setMenuOpen(false)} // Close menu after click
                                     >
-                                        Home
+                                        {link.name}
                                     </Link>
                                 </li>
+                            ))}
 
-                                <li>
-                                    {/* Mobile About Dropdown */}
-                                    <button
-                                        className="flex items-center gap-3 px-4 py-2 rounded-lg w-full hover:bg-blue-200/60 transition-all duration-200"
-                                        onClick={(e) => {
-                                            e.stopPropagation(); // Prevent menu from closing when clicking the About dropdown
-                                            setAboutOpen(!aboutOpen);
-                                        }}
-                                    >
-                                        About{" "}
-                                        <ChevronDown className="w-5 h-5" />
-                                    </button>
-                                    <AnimatePresence>
-                                        {aboutOpen && (
-                                            <motion.div
-                                                initial={{
-                                                    opacity: 0,
-                                                    height: 0,
-                                                }}
-                                                animate={{
-                                                    opacity: 1,
-                                                    height: "auto",
-                                                }}
-                                                exit={{ opacity: 0, height: 0 }}
-                                                className="ml-6 mt-2 space-y-2 text-lg font-medium"
-                                            >
-                                                {[
-                                                    [
-                                                        "Why Homeopathy",
-                                                        "/about/why-homeopathy",
-                                                    ],
-                                                    ["About Us", "/about/us"],
-                                                    [
-                                                        "Leadership",
-                                                        "/about/leadership",
-                                                    ],
-                                                    [
-                                                        "Our Doctors",
-                                                        "/about/doctors",
-                                                    ],
-                                                    [
-                                                        "Doctor Videos",
-                                                        "/about/doctor-videos",
-                                                    ],
-                                                    [
-                                                        "Testimonials",
-                                                        "/about/testimonials",
-                                                    ],
-                                                ].map(([label, href]) => (
-                                                    <Link
-                                                        key={href}
-                                                        href={href}
-                                                        className="block px-3 py-1 rounded-md hover:bg-blue-200/60 transition"
-                                                        onClick={() =>
-                                                            setMenuOpen(false)
-                                                        } // Close menu after click on an item
-                                                    >
-                                                        {label}
-                                                    </Link>
-                                                ))}
-                                            </motion.div>
-                                        )}
-                                    </AnimatePresence>
-                                </li>
-
-                                <li>
-                                    <Link
-                                        href="/services"
-                                        className="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-blue-200/60 transition-all duration-200"
-                                        onClick={() => setMenuOpen(false)} // Close menu after click
-                                    >
-                                        Services
-                                    </Link>
-                                </li>
-
-                                <li>
-                                    {session?.user ? (
-                                        <>
-                                            <Link
-                                                href="/profile"
-                                                className="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-blue-200/60 transition-all duration-200"
-                                                onClick={() =>
-                                                    setMenuOpen(false)
-                                                } // Close menu after click
-                                            >
-                                                Profile
-                                            </Link>
-                                            <Link
-                                                href="/api/auth/signout"
-                                                className="flex items-center gap-3 px-4 py-2 rounded-lg text-red-500 hover:bg-red-700 hover:text-white transition-all duration-200"
-                                                onClick={() =>
-                                                    setMenuOpen(false)
-                                                } // Close menu after click
-                                            >
-                                                Logout
-                                            </Link>
-                                        </>
-                                    ) : (
-                                        <Link href="/api/auth/signin">
-                                            <Button
-                                                className="w-full bg-blue-700 hover:bg-blue-800 text-white mt-4"
-                                                onClick={() =>
-                                                    setMenuOpen(false)
-                                                } // Close menu after click
-                                            >
-                                                Sign-In
-                                            </Button>
+                            <li>
+                                {session?.user ? (
+                                    <>
+                                        <Link
+                                            href="/profile"
+                                            className={`flex items-center gap-3 px-4 py-2 rounded-lg transition-all duration-200 ${
+                                                pathname === "/profile"
+                                                    ? "text-blue-600 bg-blue-100"
+                                                    : "text-gray-700 hover:text-blue-600 hover:bg-blue-100"
+                                            }`}                                            onClick={() => setMenuOpen(false)} // Close menu after click
+                                        >
+                                            Profile
                                         </Link>
-                                    )}
-                                </li>
-                            </ul>
-                        </motion.div>
-                    )}
-                </AnimatePresence>
-            </div>
-        </div>
+                                        <Link
+                                            href="/api/auth/signout"
+                                            className="flex items-center gap-3 mt-3 px-4 py-2 rounded-lg text-red-500 hover:bg-red-700 hover:text-white transition-all duration-200"
+                                            onClick={() => setMenuOpen(false)} // Close menu after click
+                                        >
+                                            Logout
+                                        </Link>
+                                    </>
+                                ) : (
+                                    <Link href="/api/auth/signin">
+                                        <Button
+                                            className="w-full bg-blue-700 hover:bg-blue-800 text-white mt-4"
+                                            onClick={() => setMenuOpen(false)} // Close menu after click
+                                        >
+                                            Sign-In
+                                        </Button>
+                                    </Link>
+                                )}
+                            </li>
+                        </ul>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+        </nav>
     );
 };
 

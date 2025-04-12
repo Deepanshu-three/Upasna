@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer"; // Importing Footer Component
+import Footer from "@/components/Footer";
 import { SessionProvider } from "next-auth/react";
 
 export default function RootLayout({
@@ -11,26 +11,26 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en">
-          <SessionProvider>
-            <body className="flex flex-col min-h-screen bg-gray-100">
-                {/* Navbar - Fixed at the top */}
-                <div className="fixed top-0 left-0 w-full z-50 shadow-md bg-white">
-                    <Navbar />
-                </div>
-
-                {/* Content with space for fixed navbar */}
-                <main className="flex-grow w-full flex justify-center px-4 pt-16">
-                    <div className="w-full max-w-[1200px]">
-                        {children}
+        <html lang="en" className="overflow-x-hidden">
+            <SessionProvider>
+                <body className="flex flex-col min-h-screen bg-gray-100 overflow-x-hidden">
+                    {/* Navbar - Fixed at the top */}
+                    <div className="fixed top-0 left-0 w-full z-50 shadow-md bg-white">
+                        <Navbar />
                     </div>
-                </main>
 
-                {/* Footer - Always at the bottom */}
-                <div className=" w-full shadow-md bg-white">
-                    <Footer />
-                </div>
-            </body>
+                    {/* Content with space for fixed navbar */}
+                    <main className="flex-grow w-full flex justify-center px-4 pt-16">
+                        <div className="w-full max-w-[1200px] overflow-x-hidden">
+                            {children}
+                        </div>
+                    </main>
+
+                    {/* Footer - Always at the bottom */}
+                    <div className="w-full shadow-md bg-white">
+                        <Footer />
+                    </div>
+                </body>
             </SessionProvider>
         </html>
     );
