@@ -2,7 +2,7 @@ import React from "react";
 
 const WhyChooseSection = () => {
   return (
-    <div className="px-4 sm:px-6 lg:px-8 py-16">
+    <div className="px-4 sm:px-6 lg:px-8 py-16 border rounded-xl bg-gradient-to-r from-blue-50 via-gray-100 to-white p-4 m-10 w-full mx-auto">
       <div className="flex flex-col items-center space-y-8 sm:space-y-10 text-center max-w-6xl mx-auto">
         {/* Heading */}
         <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-blue-600">

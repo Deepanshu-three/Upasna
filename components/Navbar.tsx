@@ -33,20 +33,16 @@ const navlinks: navlinkType[] = [
         name: "Home",
     },
     {
-        link: "/homoeopathy",
-        name: "Why Homoeopathy",
-    },
-    {
         link: "/about",
         name: "About",
     },
     {
-        link: "/testimoniols",
-        name: "Testimonials",
-    },
-    {
         link: "/contact",
         name: "Contact Us",
+    },
+    {
+        link: "/faqs",
+        name: "FAQs"
     },
     {
         link: "/book-appoinment",

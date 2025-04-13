@@ -13,7 +13,7 @@ export default function RootLayout({
     return (
         <html lang="en" className="overflow-x-hidden">
             <SessionProvider>
-                <body className="flex flex-col min-h-screen bg-gray-100 overflow-x-hidden">
+                <body className="flex flex-col min-h-screen bg-gradient-to-b from-blue-100/60 via-blue-300 to-blue-100 overflow-x-hidden">
                     {/* Navbar - Fixed at the top */}
                     <div className="fixed top-0 left-0 w-full z-50 shadow-md bg-white">
                         <Navbar />

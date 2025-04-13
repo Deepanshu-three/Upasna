@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/button";
 import React from "react";
 
 const disease = [
@@ -25,7 +26,7 @@ const disease = [
 
 const Treatments = () => {
   return (
-    <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-12">
+    <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-12 flex flex-col justify-center items-center border bg-gradient-to-r from-blue-50 via-gray-100 to-white rounded-xl m-10">
       {/* Header */}
       <div className="text-center space-y-4">
         <h1 className="text-2xl sm:text-3xl font-extrabold text-blue-600">Our Treatments</h1>
@@ -56,6 +57,8 @@ const Treatments = () => {
           </div>
         ))}
       </div>
+
+      <Button variant={"outline"} className="cursor-pointer">More Available Treatments</Button>
     </div>
   );
 };

@@ -17,19 +17,25 @@ const faqs = [
 
 const FAQs = () => {
   return (
-    <div className="p-10 max-w-4xl mx-auto space-y-8">
+    <div className="p-16 max-w-4xl mx-auto space-y-10">
       {/* Section Heading */}
-      <h1 className="text-4xl font-bold text-blue-600 text-center">FAQs</h1>
-      <p className="text-lg text-gray-700 text-center">
+      <h1 className="text-6xl font-extrabold text-gray-100 text-center leading-tight">
+        FAQs
+      </h1>
+      <p className="text-2xl text-gray-200 text-center mb-12">
         Find answers to the most common questions about Afecto Homeopathy Clinic.
       </p>
 
       {/* FAQ Accordion */}
-      <Accordion type="single" collapsible className="w-full">
+      <Accordion type="single" collapsible className="w-full border">
         {faqs.map((faq, index) => (
-          <AccordionItem key={index} value={`faq-${index}`} className="border-b border-gray-300">
-            <AccordionTrigger className="text-lg font-medium text-gray-900">{faq.question}</AccordionTrigger>
-            <AccordionContent className="text-gray-600">{faq.answer}</AccordionContent>
+          <AccordionItem key={index} value={`faq-${index}`} className="border-b border-gray-500">
+            <AccordionTrigger className="text-2xl font-semibold text-gray-100 hover:text-blue-400">
+              {faq.question}
+            </AccordionTrigger>
+            <AccordionContent className="text-xl text-gray-200">
+              {faq.answer}
+            </AccordionContent>
           </AccordionItem>
         ))}
       </Accordion>

@@ -11,7 +11,7 @@ const treatmentResults = [
 
 const BeforeAfter = () => {
   return (
-    <div className="p-10 space-y-8 text-center">
+    <div className="p-10 space-y-8 text-center border rounded-xl bg-gradient-to-r from-blue-50 via-gray-100 to-white m-10 w-full mx-auto">
       {/* Section Title */}
       <h1 className="text-4xl font-bold text-blue-600">Before And After</h1>
       <p className="text-lg text-gray-700 max-w-3xl mx-auto">
@@ -41,7 +41,7 @@ const BeforeAfter = () => {
       </div>
 
       {/* CTA Button */}
-      <Button className="bg-blue-600 text-white px-6 py-3 rounded-md text-lg font-semibold">
+      <Button variant={"outline"} className="cursor-pointer px-6 py-3 rounded-md text-lg font-semibold">
         See All Treatment Results
       </Button>
     </div>
