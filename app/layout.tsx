@@ -4,7 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { SessionProvider } from "next-auth/react";
-
+import { Toaster } from "@/components/ui/sonner"
 export default function RootLayout({
     children,
 }: Readonly<{
@@ -21,11 +21,12 @@ export default function RootLayout({
 
                     {/* Content with space for fixed navbar */}
                     <main className="flex-grow w-full flex justify-center px-4 pt-16">
-                        <div className="w-full max-w-[1200px] overflow-x-hidden">
+                        <div className="w-full max-w-7xl overflow-x-hidden">
                             {children}
                         </div>
-                    </main>
 
+                    </main>
+                    <Toaster />
                     {/* Footer - Always at the bottom */}
                     <div className="w-full shadow-md bg-white">
                         <Footer />

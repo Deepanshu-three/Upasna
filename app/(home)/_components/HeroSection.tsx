@@ -23,7 +23,11 @@ const HeroSection = () => {
 
         <div>
           <Button className="mt-4 px-6 sm:px-8 py-3 sm:py-4 text-white bg-blue-600 hover:bg-blue-700 transition text-base sm:text-lg rounded-lg shadow-md">
-            Book Appointment
+            Book Appointment Online
+          </Button>
+           <span className="mx-2">OR</span>
+          <Button className="mt-4 px-6 sm:px-8 py-3 sm:py-4 text-white bg-blue-600 hover:bg-blue-700 transition text-base sm:text-lg rounded-lg shadow-md">
+            Call
           </Button>
         </div>
       </div>

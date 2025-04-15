@@ -33,8 +33,8 @@ const navlinks: navlinkType[] = [
         name: "Home",
     },
     {
-        link: "/about",
-        name: "About",
+        link: "/appoinment",
+        name: "Book Appoinment",
     },
     {
         link: "/contact",
@@ -45,8 +45,8 @@ const navlinks: navlinkType[] = [
         name: "FAQs"
     },
     {
-        link: "/book-appoinment",
-        name: "Book Appoinment",
+        link: "/about",
+        name: "About",
     },
 ];
 
