@@ -24,9 +24,9 @@ const page = () => {
           {/* Doctor Image */}
           <div className="w-full lg:w-1/2 flex justify-center">
             <img
-              src="/doctor-abhinav.jpg" // Replace with actual image
+              src="/docVerma.jpeg" // Replace with actual image
               alt="Dr. Abhinav Verma"
-              className="w-full max-w-sm rounded-xl shadow-lg object-cover"
+              className="w-full max-w-md rounded-xl shadow-lg object-cover"
             />
           </div>
 

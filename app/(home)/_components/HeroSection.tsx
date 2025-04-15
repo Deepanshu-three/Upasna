@@ -1,10 +1,15 @@
+"use client"
 import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import Image from "next/image";
+import Autoplay from "embla-carousel-autoplay"
 import React from "react";
 
 const HeroSection = () => {
+  
   return (
-    <div className="flex flex-col md:flex-row items-center justify-between px-4 sm:px-8 md:px-20 py-10 min-h-[90vh] gap-8 md:gap-16">
+    <div className="flex flex-col md:flex-row items-center justify-center justify-between px-4 sm:px-8 md:px-20 py-10 min-h-[90vh] gap-8 md:gap-16">
       
       {/* Left Section */}
       <div className="flex-1 text-center md:text-left space-y-6">
@@ -34,13 +39,25 @@ const HeroSection = () => {
 
       {/* Right Section - Hero Image */}
       <div className="flex-1 flex justify-center">
-        <Image
-          src="/home/hero.webp"
-          alt="Homeopathy healing illustration"
-          width={600}
-          height={450}
-          className="w-full max-w-xs sm:max-w-md md:max-w-lg h-auto"
-        />
+      <Carousel
+        plugins={[Autoplay({delay: 2000})]}
+      className="w-full max-w-l">
+      <CarouselContent>
+        {Array.from({ length: 5 }).map((_, index) => (
+          <CarouselItem key={index}>
+            <div className="p-1">
+              <Card>
+                <CardContent className="flex aspect-square items-center justify-center p-6">
+                  <span className="text-4xl font-semibold">{index + 1}</span>
+                </CardContent>
+              </Card>
+            </div>
+          </CarouselItem>
+        ))}
+      </CarouselContent>
+      <CarouselPrevious />
+      <CarouselNext />
+    </Carousel>
       </div>
     </div>
   );

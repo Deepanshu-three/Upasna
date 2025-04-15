@@ -27,6 +27,8 @@ import {
 import { toast } from "sonner";
 import { useTransition } from "react";
 import { BookAppointment } from "@/actions/bookAppoinment";
+import { checkPromoCode } from "@/actions/checkPromoCode";
+import Script from "next/script";
 
 function Page() {
     const router = useRouter(); // Initialize router for navigation
@@ -36,11 +38,22 @@ function Page() {
     console.log(status);
     console.log(session);
 
-    const [step, setStep] = React.useState<1 | 2>(1);
-    const [selectedDate, setSelectedDate] = React.useState<Date | undefined>(
-        new Date()
-    );
+    const [step, setStep] = React.useState<1 | 2 | 3>(1);
+    const [selectedDate, setSelectedDate] = React.useState<Date>(new Date());
     const [selectedTime, setSelectedTime] = React.useState<string>("");
+
+    const [promoCode, setPromoCode] = React.useState<string>("");
+    const [amount, setAmount] = React.useState<number>(500);
+
+    const handleApplyPromoCode = async () => {
+        startTransition(async () => {
+            const result = await checkPromoCode(promoCode); // Call the server action
+            if (result.success) {
+                setAmount(amount - result.discountAmount); // Apply the discount
+                toast.success(result.message); // Show success message
+            }
+        });
+    };
 
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
@@ -62,45 +75,94 @@ function Page() {
         if (!session) {
             // Redirect to the login page if no session is found
             router.push("/sign-in");
+            return;
         }
     }, [session, status, router]);
 
-    function handleFinalSubmit(data: z.infer<typeof formSchema>) {
-        if (!selectedDate || !selectedTime) {
-            toast.error("Please select both date and time.");
-            return;
-        }
 
-        if (!session?.user?.email) {
-            toast.error("User session not found.");
-            return;
-        }
+    const createOrder = async () => {
+        try {
+            const res = await fetch("/api/createOrder", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ amount: amount * 100 }),
+            });
 
-        const formData = {
-            ...data,
-            appointmentDate: selectedDate,
-            appointmentTime: selectedTime,
-            email: session.user.email,
-            phone: "N/A", // Replace with actual input if needed
-            userId: session.user.id!, // Ensure this exists in session
-        };
+            const apiData = await res.json();
 
-        startTransition(async () => {
-            const res = await BookAppointment(formData);
-
-            if (!res.success) {
-                toast.error(res.error || "Failed to book appointment.");
-            } else {
-                toast.success(res.message || "Appointment booked!");
-                form.reset();
-                setStep(1);
-                router.push("/appointment-success");
+            if (apiData.error) {
+                toast.error(apiData.res.error);
+                return;
             }
-        });
-    }
+
+            const paymentOptions = {
+                key: process.env.NEXT_PUBLIC_RAZOR_PAY_KEY_ID,
+                amount: apiData.amount,
+                currency: apiData.currency,
+                name: "Your Company Name",
+                description: "Test Transaction",
+                order_id: apiData.id,
+                handler: async function (response: any) {
+                    const res = await fetch("/api/verifyOrder", {
+                        method: "POST",
+                        body: JSON.stringify({
+                            orderId: response.razorpay_order_id,
+                            razorpayPaymentId: response.razorpay_payment_id,
+                            razorpaySignature: response.razorpay_signature,
+                        }),
+                    });
+                    const data = await res.json();
+
+                    if(!data.isOk) {
+                        toast.error("Payment verification failed.");
+                        return;
+                    }
+
+                    toast.success("Payment verified successfully!");
+
+                    const formData = {
+                        ...form.getValues(),
+                        appointmentDate: selectedDate,
+                        appointmentTime: selectedTime,
+                        email: session?.user.email!,
+                        phone: "N/A",
+                        userId: session?.user.id!,
+                    };
+
+                    startTransition(async () => {
+                        const res = await BookAppointment(formData);
+                        if (!res.success)
+                            toast.error(
+                                res.error || "Failed to book appointment."
+                            );
+                        else {
+                            toast.success(res.message || "Appointment booked!");
+                            form.reset();
+                            setStep(1);
+                            router.push("/appointment-success");
+                        }
+                    });
+                },
+            };
+
+            const payment = new (window as any).Razorpay(paymentOptions);
+            payment.open();
+            // Handle successful order creation logic here
+            toast.success("Order created successfully!");
+        } catch (error) {
+            toast.error("Failed to create order. Please try again.");
+            console.error("Error creating order:", error);
+        }
+    };
 
     return (
         <div className="min-h-screen flex flex-col items-center justify-center p-4">
+            <Script
+                type="text/javascript"
+                src="https://checkout.razorpay.com/v1/checkout.js"
+            />
             <div className="text-4xl font-bold mb-8 text-blue-500 text-center">
                 Book Appointment
             </div>
@@ -270,7 +332,6 @@ function Page() {
 
                     {step === 2 && (
                         <form
-                            onSubmit={form.handleSubmit(handleFinalSubmit)}
                             className="space-y-6"
                         >
                             <h2 className="text-2xl font-semibold text-center text-blue-700">
@@ -281,7 +342,9 @@ function Page() {
                                 <Calendar
                                     mode="single"
                                     selected={selectedDate}
-                                    onSelect={setSelectedDate}
+                                    onSelect={(date) =>
+                                        date && setSelectedDate(date)
+                                    }
                                     fromDate={new Date()}
                                 />
 
@@ -330,14 +393,75 @@ function Page() {
                                     Back
                                 </Button>
                                 <Button
-                                    type="submit"
+                                    type="button"
                                     disabled={!selectedDate || !selectedTime}
                                     className="w-full sm:w-auto"
+                                    onClick={() => setStep(3)}
                                 >
-                                    Submit
+                                    Proceed
                                 </Button>
                             </div>
                         </form>
+                    )}
+
+                    {step === 3 && (
+                        <div className="space-y-6">
+                            <h2 className="text-2xl font-semibold text-center text-blue-700">
+                                Payment Summary
+                            </h2>
+                            <div className="text-center">
+                                <p>
+                                    Please proceed with the payment to book your
+                                    appoinment
+                                </p>
+                            </div>
+
+                            {/* Payment Summary */}
+                            <div className="text-center">
+                                <p className="text-xl font-semibold">
+                                    Total Amount: ₹{amount}
+                                </p>{" "}
+                                {/* Random amount in INR */}
+                            </div>
+
+                            {/* Promo Code Input */}
+                            <div className="flex justify-center items-center space-x-4">
+                                <input
+                                    type="text"
+                                    placeholder="Enter Promo Code"
+                                    className="border border-gray-300 px-4 py-2 rounded-lg"
+                                    onChange={(e) =>
+                                        setPromoCode(e.target.value)
+                                    } // Assuming setPromoCode updates state for promo code
+                                />
+
+                                <Button
+                                    onClick={handleApplyPromoCode}
+                                    className="bg-blue-700 text-white px-4 py-2 rounded-lg"
+                                >
+                                    Apply
+                                </Button>
+                            </div>
+
+                            {/* Proceed to Payment Button */}
+                            <div className="flex justify-around">
+                                <Button
+                                    variant="outline"
+                                    type="button"
+                                    onClick={() => setStep(2)}
+                                    className="w-full sm:w-auto"
+                                >
+                                    Back
+                                </Button>
+                                <Button
+                                    disabled={isPending}
+                                    onClick={createOrder}
+                                    className="w-full sm:w-auto bg-green-600 text-white px-6 py-2 rounded-lg"
+                                >
+                                    Proceed to Payment
+                                </Button>
+                            </div>
+                        </div>
                     )}
                 </Form>
             </div>

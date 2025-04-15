@@ -55,6 +55,8 @@ const Navbar = () => {
     const pathname = usePathname(); // 👈 get current route
     const [menuOpen, setMenuOpen] = useState(false);
 
+    console.log("Session: ", session);
+
     return (
         <nav className="fixed top0 left-0 right-0 bg-white/90 backdrop:blur-sm z-50 border-b border-gray-100 shadow-sm">
             <div className="w-full container mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8 md:h-20 h-16">
@@ -110,7 +112,7 @@ const Navbar = () => {
                                         session.user.image ||
                                         "/default-avatar.jpg"
                                     }
-                                    alt="Profile"
+                                    alt=""
                                     className="w-10 h-10 rounded-full"
                                 />
                                 <ChevronDown className="w-4 h-4" />

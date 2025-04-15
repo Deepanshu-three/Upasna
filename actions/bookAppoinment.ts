@@ -21,10 +21,13 @@ interface Props {
 export async function BookAppointment(data: Props) {
   const { appointmentDate, appointmentTime, userId } = data;
 
+  const dateOnly = new Date(data.appointmentDate);
+  dateOnly.setHours(0, 0, 0, 0);
+
   // Step 1: Check if an appointment already exists at that date + time
   const existing = await db.appointment.findFirst({
     where: {
-      appointmentDate: appointmentDate,
+      appointmentDate: dateOnly,
       appointmentTime: appointmentTime,
     },
   });
@@ -46,7 +49,7 @@ export async function BookAppointment(data: Props) {
       gender: data.gender,
       previousTreatment: data.previousTreatment,
       medicalHistory: data.medicalHistory,
-      appointmentDate: appointmentDate,
+      appointmentDate: dateOnly,
       appointmentTime: appointmentTime,
       email: data.email,
       whatsAppNumber: data.whatsAppNumber,

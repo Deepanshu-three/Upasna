@@ -1,10 +1,9 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { SessionProvider } from "next-auth/react";
-import { Toaster } from "@/components/ui/sonner"
+import { Toaster } from "@/components/ui/sonner";
+
 export default function RootLayout({
     children,
 }: Readonly<{
@@ -13,7 +12,7 @@ export default function RootLayout({
     return (
         <html lang="en" className="overflow-x-hidden">
             <SessionProvider>
-                <body className="flex flex-col min-h-screen bg-gradient-to-b from-blue-100/60 via-blue-300 to-blue-100 overflow-x-hidden">
+                <body className="flex flex-col min-h-screen bg-gradient-to-r from-blue-200 to-cyan-200 overflow-x-hidden">
                     {/* Navbar - Fixed at the top */}
                     <div className="fixed top-0 left-0 w-full z-50 shadow-md bg-white">
                         <Navbar />
@@ -24,7 +23,6 @@ export default function RootLayout({
                         <div className="w-full max-w-7xl overflow-x-hidden">
                             {children}
                         </div>
-
                     </main>
                     <Toaster />
                     {/* Footer - Always at the bottom */}
