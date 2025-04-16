@@ -17,8 +17,9 @@ model User {
   accounts       Account[]
   sessions       Session[]
   appointments   Appointment[]
-  Authenticator  Authenticator[] // Optional for WebAuthn support
-
+  Authenticators Authenticator[] // Optional for WebAuthn support
+  payments       Payment[]       // Relation to Payment model
+  
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
@@ -78,8 +79,6 @@ model Appointment {
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
-
-// You need to define the Authenticator model if you're using it.
 model Authenticator {
   id       String @id @default(cuid())
   userId   String
@@ -89,4 +88,31 @@ model Authenticator {
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+}
+
+// New model to store payment details
+model Payment {
+  id          String   @id @default(cuid())
+  userId      String
+  amount      Float    // Store amount paid
+  paymentDate DateTime @default(now())  // Date when the payment was made
+  paymentStatus String // Status of the payment (e.g., "Completed", "Failed", etc.)
+  paymentMethod String  // Method used for payment (e.g., "Razorpay", "Credit Card")
+
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+// Updated model to store values from the popup, without user relation
+model ContactInfo {
+  id            String   @id @default(cuid())
+  name          String
+  email         String
+  contactNumber String
+  city          String
+
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
 }

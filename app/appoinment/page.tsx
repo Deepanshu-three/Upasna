@@ -111,6 +111,7 @@ function Page() {
                             orderId: response.razorpay_order_id,
                             razorpayPaymentId: response.razorpay_payment_id,
                             razorpaySignature: response.razorpay_signature,
+                            amount: amount * 100,
                         }),
                     });
                     const data = await res.json();
@@ -120,6 +121,9 @@ function Page() {
                         return;
                     }
 
+                    
+                    
+                    console.log("Payment verified successfully!", data);
                     toast.success("Payment verified successfully!");
 
                     const formData = {
@@ -132,16 +136,17 @@ function Page() {
                     };
 
                     startTransition(async () => {
-                        const res = await BookAppointment(formData);
-                        if (!res.success)
+                        const res1 = await BookAppointment(formData);
+                        if (!res1.success)
                             toast.error(
-                                res.error || "Failed to book appointment."
+                                res1.error || "Failed to book appointment."
                             );
                         else {
-                            toast.success(res.message || "Appointment booked!");
+                            toast.success(res1.message || "Appointment booked!");
                             form.reset();
                             setStep(1);
                             router.push("/appointment-success");
+                            router.refresh();
                         }
                     });
                 },

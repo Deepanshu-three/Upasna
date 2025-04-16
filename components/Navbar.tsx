@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useSession } from "next-auth/react";
-import { usePathname } from "next/navigation"; // 👈 import this
+import { usePathname } from "next/navigation"; 
 import { useState } from "react";
 import { Button } from "./ui/button";
 import {
@@ -42,7 +42,7 @@ const navlinks: navlinkType[] = [
     },
     {
         link: "/faqs",
-        name: "FAQs"
+        name: "FAQs",
     },
     {
         link: "/about",
@@ -52,7 +52,7 @@ const navlinks: navlinkType[] = [
 
 const Navbar = () => {
     const { data: session } = useSession();
-    const pathname = usePathname(); // 👈 get current route
+    const pathname = usePathname(); 
     const [menuOpen, setMenuOpen] = useState(false);
 
     console.log("Session: ", session);
@@ -105,40 +105,49 @@ const Navbar = () => {
                             <Button className="bg-blue-500">Sign In</Button>
                         </Link>
                     ) : (
-                        <DropdownMenu>
-                            <DropdownMenuTrigger className="flex items-center gap-1 px-4 py-2 rounded-lg cursor-pointer transition-all duration-200">
-                                <img
-                                    src={
-                                        session.user.image ||
-                                        "/default-avatar.jpg"
-                                    }
-                                    alt=""
-                                    className="w-10 h-10 rounded-full"
-                                />
-                                <ChevronDown className="w-4 h-4" />
-                            </DropdownMenuTrigger>
-                            <DropdownMenuContent className="w-56">
-                                <DropdownMenuItem asChild>
-                                    <Link
-                                        href="/profile"
-                                        className="flex items-center px-4 py-2 rounded-md hover:bg-blue-200/60"
-                                    >
-                                        <User className="mr-2 w-5 h-5" />
-                                        Profile
-                                    </Link>
-                                </DropdownMenuItem>
+                        <div className="flex items-center justify-center">
+                            {session?.user.isAdmin && (
+                                <Link href={"/dashboard"}>
+                                    <Button className="cursor-pointer">
+                                        Dashboard
+                                    </Button>
+                                </Link>
+                            )}
+                            <DropdownMenu>
+                                <DropdownMenuTrigger className="flex items-center gap-1 px-4 py-2 rounded-lg cursor-pointer transition-all duration-200">
+                                    <img
+                                        src={
+                                            session.user.image ||
+                                            "/default-avatar.jpg"
+                                        }
+                                        alt=""
+                                        className="w-10 h-10 rounded-full"
+                                    />
+                                    <ChevronDown className="w-4 h-4" />
+                                </DropdownMenuTrigger>
+                                <DropdownMenuContent className="w-56">
+                                    <DropdownMenuItem asChild>
+                                        <Link
+                                            href="/profile"
+                                            className="flex items-center px-4 py-2 rounded-md hover:bg-blue-200/60"
+                                        >
+                                            <User className="mr-2 w-5 h-5" />
+                                            Profile
+                                        </Link>
+                                    </DropdownMenuItem>
 
-                                <DropdownMenuItem asChild>
-                                    <Link
-                                        href="/api/auth/signout"
-                                        className="flex items-center text-red-500 hover:text-white hover:bg-red-500 px-4 py-2 rounded-md"
-                                    >
-                                        <LogOut className="mr-2 w-5 h-5" />
-                                        Logout
-                                    </Link>
-                                </DropdownMenuItem>
-                            </DropdownMenuContent>
-                        </DropdownMenu>
+                                    <DropdownMenuItem asChild>
+                                        <Link
+                                            href="/api/auth/signout"
+                                            className="flex items-center text-red-500 hover:text-white hover:bg-red-500 px-4 py-2 rounded-md"
+                                        >
+                                            <LogOut className="mr-2 w-5 h-5" />
+                                            Logout
+                                        </Link>
+                                    </DropdownMenuItem>
+                                </DropdownMenuContent>
+                            </DropdownMenu>
+                        </div>
                     )}
                 </div>
             </div>
@@ -152,7 +161,7 @@ const Navbar = () => {
                         animate={{ opacity: 1, x: 0 }}
                         exit={{ opacity: 0, x: -50 }}
                         transition={{ duration: 0.3 }}
-                        className="fixed top-24 left-0 w-4/5 h-full bg-gray-100 text-blue-900 px-6 py-6 z-50 overflow-y-auto rounded-r-xl shadow-xl backdrop-blur-md"
+                        className="fixed top-18 md:top-24 left-0 w-4/5 h-full bg-gray-100 text-blue-900 px-6 py-6 z-50 overflow-y-auto rounded-r-xl shadow-xl backdrop-blur-md"
                     >
                         {/* Profile Section */}
                         {session?.user && (
@@ -187,8 +196,7 @@ const Navbar = () => {
                                                 ? "text-blue-600 bg-blue-100"
                                                 : "text-gray-700 hover:text-blue-600 hover:bg-blue-100"
                                         }`}
-                                        
-                                        onClick={() => setMenuOpen(false)} // Close menu after click
+                                        onClick={() => setMenuOpen(false)}
                                     >
                                         {link.name}
                                     </Link>
@@ -198,29 +206,45 @@ const Navbar = () => {
                             <li>
                                 {session?.user ? (
                                     <>
+                                        {session?.user.isAdmin && (
+                                            <Link
+                                                href="/dashboard"
+                                                className={`flex mb-3 items-center gap-3 px-4 py-2 rounded-lg transition-all duration-200 ${
+                                                    pathname === "/dashboard"
+                                                        ? "text-blue-600 bg-blue-100"
+                                                        : "text-gray-700 hover:text-blue-600 hover:bg-blue-100"
+                                                }`}
+                                                onClick={() =>
+                                                    setMenuOpen(false)
+                                                }
+                                            >
+                                                Dashboard
+                                            </Link>
+                                        )}
                                         <Link
                                             href="/profile"
                                             className={`flex items-center gap-3 px-4 py-2 rounded-lg transition-all duration-200 ${
                                                 pathname === "/profile"
                                                     ? "text-blue-600 bg-blue-100"
                                                     : "text-gray-700 hover:text-blue-600 hover:bg-blue-100"
-                                            }`}                                            onClick={() => setMenuOpen(false)} // Close menu after click
+                                            }`}
+                                            onClick={() => setMenuOpen(false)} 
                                         >
                                             Profile
                                         </Link>
                                         <Link
                                             href="/api/auth/signout"
                                             className="flex items-center gap-3 mt-3 px-4 py-2 rounded-lg text-red-500 hover:bg-red-700 hover:text-white transition-all duration-200"
-                                            onClick={() => setMenuOpen(false)} // Close menu after click
+                                            onClick={() => setMenuOpen(false)} 
                                         >
                                             Logout
                                         </Link>
                                     </>
                                 ) : (
-                                    <Link href="/api/auth/signin">
+                                    <Link href="/sign-in">
                                         <Button
                                             className="w-full bg-blue-700 hover:bg-blue-800 text-white mt-4"
-                                            onClick={() => setMenuOpen(false)} // Close menu after click
+                                            onClick={() => setMenuOpen(false)} 
                                         >
                                             Sign-In
                                         </Button>

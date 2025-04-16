@@ -1,6 +1,37 @@
+// app/why-choose/page.tsx
 import React from "react";
 
-const WhyChooseSection = () => {
+export const metadata = {
+  title: "Why Choose Upasna Homoeo - Best Homeopathy Clinic in Ajmer",
+  description:
+    "Discover why Upasna Homoeo is Ajmer's trusted homeopathy clinic with 30+ years of experience, expert doctors, and 500K+ happy patients.",
+  keywords: [
+    "Homeopathy Clinic Ajmer",
+    "Upasna Homoeo",
+    "Best Homeopathy in Rajasthan",
+    "Natural Healing Ajmer",
+    "Homeopathy Treatment India",
+  ],
+  openGraph: {
+    title: "Upasna Homoeo - Natural Healing in Ajmer",
+    description:
+      "Expert homeopathic treatment with 30+ years of experience. Treating 500K+ patients naturally at Upasna Homoeo.",
+    url: "https://yourdomain.com/why-choose", // Replace with actual domain
+    siteName: "Upasna Homoeo",
+    images: [
+      {
+        url: "https://yourdomain.com/og-image.jpg", // Replace with actual hosted image
+        width: 1200,
+        height: 630,
+        alt: "Upasna Homoeo Clinic",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+};
+
+const WhyChoosePage = () => {
   return (
     <div className="px-4 sm:px-6 lg:px-8 py-16 border rounded-xl bg-gradient-to-r from-blue-50 via-gray-100 to-white p-4 m-10 w-full mx-auto">
       <div className="flex flex-col items-center space-y-8 sm:space-y-10 text-center max-w-6xl mx-auto">
@@ -11,60 +42,48 @@ const WhyChooseSection = () => {
 
         {/* Subheading */}
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900">
-          Why Choose Afecto Homeopathy® Clinic?
+          Why Choose Upasna Homoeo® Clinic?
         </h2>
 
         {/* Description */}
         <p className="text-base sm:text-lg md:text-xl text-gray-700 max-w-4xl">
-          Afecto Homeopathy Clinic is the leading homeopathic clinic for all types of diseases.
-          Choosing Afecto Homeopathy gives patients access to a comprehensive healing method
-          that prioritizes their mental, physical, and spiritual health. We constantly focus on
-          individualized treatment programs catered to the specific needs of each patient.
+          Upasna Homoeo Clinic is a trusted homeopathic clinic for a wide range of chronic and acute conditions. 
+          Our approach emphasizes holistic healing, focusing on the patient’s physical, emotional, and mental well-being. 
+          We craft personalized treatment plans based on each individual’s needs.
         </p>
 
         <p className="text-base sm:text-lg md:text-xl text-gray-700 max-w-4xl">
-          At Afecto Homeopathy, we support people in their health journeys and help them achieve
-          the highest levels of balance. Get 100% safe and natural homeopathy treatment today
-          from our expert homeopathic doctors in India.
+          Our expert homeopaths in Ajmer and across India are committed to providing natural, effective, 
+          and side-effect-free care to over 500K+ satisfied patients. Begin your wellness journey with 
+          Upasna Homoeo today.
         </p>
 
         {/* Stats Section */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 w-full pt-10">
-          {/* Years of Experience */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 w-full pt-10">
           <div className="flex flex-col items-center">
             <span className="text-4xl sm:text-5xl lg:text-6xl font-bold text-blue-600">30+</span>
-            <p className="text-base sm:text-lg text-gray-700 mt-2">
-              Years of Clinical Experience
-            </p>
+            <p className="text-base sm:text-lg text-gray-700 mt-2">Years of Clinical Experience</p>
           </div>
 
-          {/* Patients Treated */}
           <div className="flex flex-col items-center">
             <span className="text-4xl sm:text-5xl lg:text-6xl font-bold text-blue-600">500K+</span>
             <p className="text-base sm:text-lg text-gray-700 mt-2 text-center">
-              Patients Treated across 56+ countries
+              Patients Treated Across 56+ Countries
             </p>
           </div>
 
-          {/* Clinics Across Cities */}
           <div className="flex flex-col items-center">
-            <span className="text-4xl sm:text-5xl lg:text-6xl font-bold text-blue-600">8+</span>
+            <span className="text-4xl sm:text-5xl lg:text-6xl font-bold text-blue-600">2+</span>
             <p className="text-base sm:text-lg text-gray-700 mt-2 text-center">
-              Our clinics are spread across 8+ cities
+              Clinics in Multiple Cities
             </p>
           </div>
 
-          {/* Doctors and Staff */}
-          <div className="flex flex-col items-center">
-            <span className="text-4xl sm:text-5xl lg:text-6xl font-bold text-blue-600">70+</span>
-            <p className="text-base sm:text-lg text-gray-700 mt-2 text-center">
-              Doctors and specialized staff across clinics
-            </p>
-          </div>
+      
         </div>
       </div>
     </div>
   );
 };
 
-export default WhyChooseSection;
+export default WhyChoosePage;
