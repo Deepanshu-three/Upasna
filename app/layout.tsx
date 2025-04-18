@@ -3,6 +3,13 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { SessionProvider } from "next-auth/react";
 import { Toaster } from "@/components/ui/sonner";
+import { Poppins } from "next/font/google";
+
+const poppins = Poppins({
+    subsets: ["latin"],
+    weight: ["300", "400", "500", "600", "700"],
+    variable: "--font-poppins",
+});
 
 export default function RootLayout({
     children,
@@ -10,9 +17,9 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en" className="overflow-x-hidden">
+        <html lang="en" className={`${poppins.variable} overflow-x-hidden`}>
             <SessionProvider>
-                <body className="flex flex-col min-h-screen bg-gradient-to-r from-blue-200 to-cyan-200 overflow-x-hidden">
+                <body className="flex flex-col min-h-screen  bg-accent  overflow-x-hidden font-sans">
                     {/* Navbar - Fixed at the top */}
                     <div className="fixed top-0 left-0 w-full z-50 shadow-md bg-white">
                         <Navbar />

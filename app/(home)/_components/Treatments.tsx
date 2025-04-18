@@ -17,14 +17,14 @@ const disease = [
 const Treatments = () => {
   return (
     <section
-      className="container mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-12 flex flex-col justify-center items-center border bg-gradient-to-r from-blue-50 via-gray-100 to-white rounded-xl m-10"
+    className="container mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-12 flex flex-col justify-center items-center border border-[#0C6170]  shadow-xl rounded-xl m-10"
     >
       {/* SEO Header */}
-      <header className="text-center space-y-4">
-        <h1 className="text-2xl sm:text-3xl font-extrabold text-blue-600">
+      <header className="text-center space-y-8">
+        <h1 className="text-2xl sm:text-3xl font-bold text-[#37BEB0]">
           Treatments at Upasna Homoeo Clinic – Ajmer, Rajasthan
         </h1>
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold">
+        <h2 className="text-[#0C6170] text-3xl sm:text-4xl md:text-5xl font-medium">
           Natural Homeopathy Solutions for 100+ Diseases
         </h2>
         <p className="text-gray-700 mx-auto text-base sm:text-lg md:text-xl max-w-4xl">

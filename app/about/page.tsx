@@ -3,18 +3,59 @@ import Testimonials from "./_components/Testimonials";
 import Reviews from "./_components/Reviews";
 import BeforeAfter from "./_components/BeforeAndAfter";
 
+// ✅ SEO metadata export for App Router
+export const metadata = {
+  title: "Why Choose Us | Upasna Homoeo",
+  description:
+    "Discover why Upasna Homoeo stands out. Led by Dr. Abhinav Verma with 30+ years of experience, we focus on root-cause healing, personalized care, and lasting wellness through homeopathy.",
+  keywords: [
+    "Upasna Homoeo",
+    "Homeopathy Clinic",
+    "Dr. Abhinav Verma",
+    "Best Homeopathy Doctor",
+    "Chronic Disease Treatment",
+    "Holistic Healing",
+    "Lifestyle Disorders",
+    "Natural Treatment",
+    "Alternative Medicine",
+  ],
+  robots: "index, follow",
+  authors: [{ name: "Upasna Homoeo" }],
+  viewport: "width=device-width, initial-scale=1",
+  openGraph: {
+    title: "Why Choose Us | Upasna Homoeo",
+    description:
+      "Upasna Homoeo, led by Dr. Abhinav Verma, provides compassionate and personalized homeopathic treatments. Trusted by 100,000+ patients over 30 years.",
+    url: "https://upasnahomoeo.com/why-us",
+    siteName: "Upasna Homoeo",
+    type: "website",
+    images: [
+      {
+        url: "/og-image.jpg", // Replace with your actual OG image
+        width: 1200,
+        height: 630,
+        alt: "Upasna Homoeo Clinic",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Why Choose Upasna Homoeo",
+    description:
+      "Trusted by thousands, Upasna Homoeo is where compassion meets homeopathy. Learn why families rely on us for healing.",
+    images: ["/og-image.jpg"], // Same as OG image
+  },
+};
+
 const Page = () => {
   return (
     <main className="min-h-screen flex flex-col items-center mt-20 px-4 md:px-8">
       <div className="max-w-7xl w-full mx-auto">
-
-        {/* Main Heading */}
+        {/* Heading */}
         <header className="text-center mb-6">
-          <h1 className="text-4xl md:text-5xl font-bold text-blue-600">
+          <h1 className="text-4xl md:text-5xl font-medium text-[#0C6170]">
             Why Upasna Homoeo?
           </h1>
-
-          {/* Intro Paragraph */}
           <p className="text-lg md:text-xl text-gray-700 leading-relaxed mt-4 mb-16">
             At Upasna Homoeo, we take pride in a holistic healing approach. We go
             beyond treating symptoms — we listen, understand, and tailor treatments
@@ -24,24 +65,23 @@ const Page = () => {
         </header>
 
         {/* Doctor Section */}
-        <section className="flex flex-col lg:flex-row items-center gap-10 mb-10 p-4 sm:p-8 border rounded-xl bg-gradient-to-r from-white via-gray-100 to-blue-50 mx-auto w-full max-w-7xl">
+        <section className="flex flex-col lg:flex-row items-center gap-10 mb-10 p-4 sm:p-8 border border-[#0C6170] shadow-xl rounded-xl mx-auto w-full max-w-7xl">
           <div className="w-full lg:w-1/2 flex justify-center">
             <img
-              src="/docVerma.jpeg" // Replace with actual image
+              src="/docVerma.jpeg"
               alt="Dr. Abhinav Verma, Homeopathy Specialist"
-              className="w-full max-w-md rounded-xl shadow-lg object-cover"
+              className="w-full max-w-md object-cover border-2 border-[#0C6170] shadow-xl rounded-xl"
             />
           </div>
           <div className="w-full lg:w-1/2 space-y-6">
-            <h2 className="text-2xl md:text-3xl font-semibold text-blue-700">
+            <h2 className="text-2xl md:text-4xl font-medium text-[#0C6170]">
               Dr. Abhinav Verma
             </h2>
             <p className="text-base md:text-lg text-gray-700 leading-relaxed">
-              With over <strong>30 years</strong> of dedicated service in the
-              field of homeopathy, Dr. Abhinav Verma has helped transform the
-              lives of over <strong>100,000 patients</strong>. His expertise lies
-              in combining traditional methods with deep patient understanding
-              and compassion.
+              With over <strong>30 years</strong> of dedicated service in the field
+              of homeopathy, Dr. Abhinav Verma has helped transform the lives of
+              over <strong>100,000 patients</strong>. His expertise lies in combining
+              traditional methods with deep patient understanding and compassion.
             </p>
             <ul className="list-disc list-inside text-gray-700 space-y-2">
               <li>Specialist in chronic and lifestyle-related disorders</li>
@@ -57,22 +97,22 @@ const Page = () => {
         </section>
       </div>
 
-      {/* Testimonials Section */}
-      <section className="w-full bg-gradient-to-r from-gray-50 via-gray-100 to-white py-16 m-4 border rounded-xl mb-10">
+      {/* Testimonials */}
+      <section className="w-full border border-[#0C6170] shadow-xl py-16 m-4 rounded-xl mb-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <Testimonials />
         </div>
       </section>
 
-      {/* Reviews Section */}
-      <section className="w-full bg-gradient-to-r from-white via-gray-50 to-blue-50 py-16 m-4 border rounded-xl mb-10">
+      {/* Reviews */}
+      <section className="w-full border border-[#0C6170] shadow-xl rounded-xl mb-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <Reviews />
         </div>
       </section>
 
-      {/* Before and After Section */}
-      <section className="w-full bg-gradient-to-r from-white via-gray-50 to-blue-50 py-16 m-4 border rounded-xl mb-10">
+      {/* Before and After */}
+      <section className="w-full border border-[#0C6170] shadow-xl rounded-xl py-16 m-4 mb-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <BeforeAfter />
         </div>

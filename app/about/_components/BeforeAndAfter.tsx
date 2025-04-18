@@ -12,7 +12,7 @@ const treatmentResults = [
 const BeforeAfter = () => {
   return (
     <section
-      className="px-4 sm:px-6 lg:px-8 py-16 bg-gradient-to-r from-blue-50 via-gray-100 to-white w-full mx-auto max-w-7xl text-center space-y-10 rounded-xl border"
+      className="px-4 sm:px-6 lg:px-8 py-16  w-full mx-auto max-w-7xl text-center space-y-10 rounded-xl"
     >
       {/* SEO Heading */}
       <h2 className="text-3xl sm:text-4xl font-bold text-blue-600">Before & After Treatment Results</h2>

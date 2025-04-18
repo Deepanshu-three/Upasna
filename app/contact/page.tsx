@@ -3,12 +3,13 @@
 import React from 'react'
 import { Mail, Phone, Clock } from 'lucide-react'
 import { motion } from 'framer-motion'
+import Head from 'next/head'
 
 const ContactPage = () => {
   return (
     <>
       {/* SEO Meta Tags */}
-      <head>
+      <Head>
         <title>Contact Us | Afecto Homeopathy Clinic</title>
         <meta
           name="description"
@@ -16,7 +17,7 @@ const ContactPage = () => {
         />
         <meta name="robots" content="index, follow" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-      </head>
+      </Head>
 
       <main className="w-full max-w-7xl mx-auto mt-20 flex flex-col gap-16 px-4 pb-10">
         {/* Header Section */}
@@ -25,7 +26,7 @@ const ContactPage = () => {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-3xl sm:text-4xl md:text-5xl font-bold text-blue-700 text-center"
+            className="text-4xl font-medium text-[#0C6170] text-center"
           >
             Wanna get in touch?
           </motion.h1>
@@ -37,26 +38,26 @@ const ContactPage = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
-            className="w-full border rounded-xl bg-gradient-to-r from-blue-50 via-gray-100 to-white p-10 space-y-10"
+            className="w-full border border-[#0C6170] shadow-xl rounded-xl p-10 space-y-10"
           >
             <div className="flex flex-col sm:flex-row justify-around items-center gap-8">
               {/* Email */}
               <div className="flex flex-col items-center space-y-3 text-gray-700">
-                <Mail className="w-16 h-16 text-blue-600" />
+                <Mail className="w-16 h-16 text-[#0C6170]" />
                 <h3 className="text-xl font-semibold">Email</h3>
                 <span className="text-lg sm:text-xl text-center">abc@gmail.com</span>
               </div>
 
               {/* Phone */}
               <div className="flex flex-col items-center space-y-3 text-gray-700">
-                <Phone className="w-16 h-16 text-blue-600" />
+                <Phone className="w-16 h-16 text-[#0C6170]" />
                 <h3 className="text-xl font-semibold">Call for Appointment</h3>
                 <span className="text-lg sm:text-xl text-center">+91 9876543210</span>
               </div>
 
               {/* Timings */}
               <div className="flex flex-col items-center space-y-3 text-gray-700">
-                <Clock className="w-16 h-16 text-blue-600" />
+                <Clock className="w-16 h-16 text-[#0C6170]" />
                 <h3 className="text-xl font-semibold">Timings</h3>
                 <span className="text-lg sm:text-xl text-center">9:00 AM - 9:00 PM</span>
               </div>
@@ -70,22 +71,22 @@ const ContactPage = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.6 }}
-            className="w-full border rounded-xl bg-gradient-to-r from-blue-50 via-gray-100 to-white p-10 space-y-10"
+            className="w-full border border-[#0C6170] shadow-xl rounded-xl p-10 space-y-10"
           >
-            <h2 className="text-2xl md:text-3xl font-bold text-center text-blue-700">
+            <h2 className="text-2xl md:text-4xl font-medium text-center text-[#0C6170]">
               Visit us at our Clinics
             </h2>
 
             <div className="flex flex-col md:flex-row justify-center items-center gap-10">
               {/* Clinic 1 */}
               <div className="w-full md:w-1/2 flex flex-col gap-4 items-center">
-                <h3 className="text-lg font-semibold text-blue-600 text-center">Clinic 1</h3>
+                <h3 className="text-lg font-semibold text-[#0C6170] text-center">Clinic 1</h3>
                 <address className="text-center">
                   123 Wellness Street, Health City, Delhi
                 </address>
                 <iframe
                   src="https://maps.google.com/maps?q=delhi%20hospital&t=&z=13&ie=UTF8&iwloc=&output=embed"
-                  className="w-full h-64 rounded-lg shadow-md"
+                  className="w-full h-64 border-2 border-[#0C6170] shadow-xl rounded-xl"
                   loading="lazy"
                   title="Clinic 1 Location"
                 ></iframe>
@@ -93,13 +94,13 @@ const ContactPage = () => {
 
               {/* Clinic 2 */}
               <div className="w-full md:w-1/2 flex flex-col gap-4 items-center">
-                <h3 className="text-lg font-semibold text-blue-600 text-center">Clinic 2</h3>
+                <h3 className="text-lg font-semibold text-[#0C6170] text-center">Clinic 2</h3>
                 <address className="text-center">
                   456 Care Lane, Medical Town, Mumbai
                 </address>
                 <iframe
                   src="https://maps.google.com/maps?q=mumbai%20clinic&t=&z=13&ie=UTF8&iwloc=&output=embed"
-                  className="w-full h-64 rounded-lg shadow-md"
+                  className="w-full h-64 border-2 border-[#0C6170] shadow-xl rounded-xl"
                   loading="lazy"
                   title="Clinic 2 Location"
                 ></iframe>
@@ -114,9 +115,9 @@ const ContactPage = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.6 }}
-            className="w-full border rounded-xl bg-gradient-to-r from-blue-50 via-gray-100 to-white p-10 space-y-10"
+            className="w-full border border-[#0C6170] shadow-xl rounded-xl p-10 space-y-10 mb-10"
           >
-            <h2 className="text-2xl md:text-3xl font-bold text-center text-blue-700">
+            <h2 className="text-2xl md:text-4xl font-medium text-center text-[#0C6170]">
               Our Clinic
             </h2>
 

@@ -66,8 +66,6 @@ model Appointment {
   address          String
   symptoms         String
   gender           String
-  previousTreatment String
-  medicalHistory   String
   whatsAppNumber   String
   appointmentDate  DateTime // Store only the date part logically
   appointmentTime  String   // Store time as string like "10:30 AM"

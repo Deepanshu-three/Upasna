@@ -33,15 +33,15 @@ export const metadata = {
 
 const WhyChoosePage = () => {
   return (
-    <div className="px-4 sm:px-6 lg:px-8 py-16 border rounded-xl bg-gradient-to-r from-blue-50 via-gray-100 to-white p-4 m-10 w-full mx-auto">
+    <div className="px-4 sm:px-6 lg:px-8 py-16 border border-[#0C6170] shadow-xl rounded-xl p-4 m-10 w-full mx-auto">
       <div className="flex flex-col items-center space-y-8 sm:space-y-10 text-center max-w-6xl mx-auto">
         {/* Heading */}
-        <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-blue-600">
+        <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#37BEB0]">
           We Listen. We Understand. We Treat.
         </h1>
 
         {/* Subheading */}
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium text-[#0C6170]">
           Why Choose Upasna Homoeo® Clinic?
         </h2>
 
@@ -61,19 +61,19 @@ const WhyChoosePage = () => {
         {/* Stats Section */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 w-full pt-10">
           <div className="flex flex-col items-center">
-            <span className="text-4xl sm:text-5xl lg:text-6xl font-bold text-blue-600">30+</span>
+            <span className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#0C6170]">30+</span>
             <p className="text-base sm:text-lg text-gray-700 mt-2">Years of Clinical Experience</p>
           </div>
 
           <div className="flex flex-col items-center">
-            <span className="text-4xl sm:text-5xl lg:text-6xl font-bold text-blue-600">500K+</span>
+            <span className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#0C6170]">500K+</span>
             <p className="text-base sm:text-lg text-gray-700 mt-2 text-center">
               Patients Treated Across 56+ Countries
             </p>
           </div>
 
           <div className="flex flex-col items-center">
-            <span className="text-4xl sm:text-5xl lg:text-6xl font-bold text-blue-600">2+</span>
+            <span className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#0C6170]">2+</span>
             <p className="text-base sm:text-lg text-gray-700 mt-2 text-center">
               Clinics in Multiple Cities
             </p>

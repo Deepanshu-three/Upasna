@@ -71,7 +71,7 @@ const FAQs = () => {
       transition={{ duration: 1 }}
     >
       <div className="max-w-4xl mx-auto">
-        <h1 className="text-4xl font-bold text-blue-600 text-center">FAQs</h1>
+        <h1 className="text-4xl font-medium text-[#0C6170] text-center">FAQs</h1>
         <p className="text-lg text-gray-700 text-center">
           Find answers to the most common questions about Afecto Homeopathy Clinic.
         </p>
@@ -85,7 +85,7 @@ const FAQs = () => {
           <Accordion
             type="single"
             collapsible
-            className="w-full border bg-gradient-to-r from-blue-50 via-gray-100 to-white rounded-xl m-10 p-10 mx-auto"
+            className="w-full border border-[#0C6170] shadow-xl rounded-xl m-10 p-10 mx-auto"
           >
             {faqs.map((faq, index) => (
               <motion.div

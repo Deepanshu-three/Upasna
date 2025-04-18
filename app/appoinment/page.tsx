@@ -28,6 +28,7 @@ import { toast } from "sonner";
 import { useTransition } from "react";
 import { BookAppointment } from "@/actions/bookAppoinment";
 import { checkPromoCode } from "@/actions/checkPromoCode";
+import { motion } from "framer-motion";
 import Script from "next/script";
 
 function Page() {
@@ -63,8 +64,6 @@ function Page() {
             address: "",
             symptoms: "",
             gender: "",
-            previousTreatment: "",
-            medicalHistory: "",
             whatsAppNumber: "",
         },
     });
@@ -78,7 +77,6 @@ function Page() {
             return;
         }
     }, [session, status, router]);
-
 
     const createOrder = async () => {
         try {
@@ -116,13 +114,11 @@ function Page() {
                     });
                     const data = await res.json();
 
-                    if(!data.isOk) {
+                    if (!data.isOk) {
                         toast.error("Payment verification failed.");
                         return;
                     }
 
-                    
-                    
                     console.log("Payment verified successfully!", data);
                     toast.success("Payment verified successfully!");
 
@@ -142,10 +138,12 @@ function Page() {
                                 res1.error || "Failed to book appointment."
                             );
                         else {
-                            toast.success(res1.message || "Appointment booked!");
+                            toast.success(
+                                res1.message || "Appointment booked!"
+                            );
                             form.reset();
                             setStep(1);
-                            router.push("/appointment-success");
+                            router.push("/myappointments");
                             router.refresh();
                         }
                     });
@@ -163,314 +161,314 @@ function Page() {
     };
 
     return (
-        <div className="min-h-screen flex flex-col items-center justify-center p-4">
-            <Script
-                type="text/javascript"
-                src="https://checkout.razorpay.com/v1/checkout.js"
-            />
-            <div className="text-4xl font-bold mb-8 text-blue-500 text-center">
-                Book Appointment
-            </div>
-            <div className="w-full max-w-2xl bg-white p-8 md:p-12 rounded-xl shadow-lg space-y-8">
-                <Form {...form}>
-                    {step === 1 && (
-                        <form
-                            onSubmit={form.handleSubmit(() => setStep(2))}
-                            className="space-y-6"
-                        >
-                            <h2 className="text-2xl font-semibold text-center text-blue-700">
-                                Patient Consultation Form
-                            </h2>
-
-                            <FormField
-                                control={form.control}
-                                name="name"
-                                render={({ field }) => (
-                                    <FormItem>
-                                        <FormLabel>Full Name</FormLabel>
-                                        <FormControl>
-                                            <Input
-                                                placeholder="John Doe"
-                                                {...field}
-                                            />
-                                        </FormControl>
-                                        <FormMessage />
-                                    </FormItem>
-                                )}
-                            />
-
-                            <div className="flex flex-col md:flex-row gap-4">
-                                <FormField
-                                    control={form.control}
-                                    name="age"
-                                    render={({ field }) => (
-                                        <FormItem className="flex-1">
-                                            <FormLabel>Age</FormLabel>
-                                            <FormControl>
-                                                <Input
-                                                    {...field}
-                                                    type="number"
-                                                    placeholder="25"
-                                                    onChange={(e) =>
-                                                        field.onChange(
-                                                            Number(
-                                                                e.target.value
-                                                            )
-                                                        )
-                                                    }
-                                                />
-                                            </FormControl>
-                                            <FormMessage />
-                                        </FormItem>
+        <>
+            <div className="min-h-screen flex flex-col items-center mt-10 p-4">
+                <Script
+                    type="text/javascript"
+                    src="https://checkout.razorpay.com/v1/checkout.js"
+                />
+                <div className="text-4xl font-medium mb-8 text-[#0C6170] text-center">
+                    Book Appointment
+                </div>
+                <div className="w-full max-w-2xl bg-white p-8 md:p-12 border border-[#0C6170] shadow-xl rounded-xl space-y-8">
+                    <Form {...form}>
+                        {step === 1 && (
+                            <motion.h1
+                                className="text-3xl font-bold text-center"
+                                initial={{ opacity: 0, y: -20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.5 }}
+                            >
+                                <form
+                                    onSubmit={form.handleSubmit(() =>
+                                        setStep(2)
                                     )}
-                                />
-                                <FormField
-                                    control={form.control}
-                                    name="gender"
-                                    render={({ field }) => (
-                                        <FormItem className="flex-1">
-                                            <FormLabel>Gender</FormLabel>
-                                            <FormControl>
-                                                <Input
-                                                    placeholder="Male / Female / Other"
-                                                    {...field}
-                                                />
-                                            </FormControl>
-                                            <FormMessage />
-                                        </FormItem>
-                                    )}
-                                />
-                            </div>
+                                    className="space-y-6"
+                                >
+                                    <h2 className="text-2xl font-semibold text-center text-[#0C6170]">
+                                        Patient Consultation Form
+                                    </h2>
 
-                            <FormField
-                                control={form.control}
-                                name="address"
-                                render={({ field }) => (
-                                    <FormItem>
-                                        <FormLabel>Address</FormLabel>
-                                        <FormControl>
-                                            <Input
-                                                placeholder="123 Street, City, State"
-                                                {...field}
-                                            />
-                                        </FormControl>
-                                        <FormMessage />
-                                    </FormItem>
-                                )}
-                            />
+                                    <FormField
+                                        control={form.control}
+                                        name="name"
+                                        render={({ field }) => (
+                                            <FormItem>
+                                                <FormLabel>Full Name</FormLabel>
+                                                <FormControl>
+                                                    <Input
+                                                        placeholder="John Doe"
+                                                        {...field}
+                                                    />
+                                                </FormControl>
+                                                <FormMessage />
+                                            </FormItem>
+                                        )}
+                                    />
 
-                            <FormField
-                                control={form.control}
-                                name="symptoms"
-                                render={({ field }) => (
-                                    <FormItem>
-                                        <FormLabel>Symptoms</FormLabel>
-                                        <FormControl>
-                                            <Input
-                                                placeholder="Describe your symptoms"
-                                                {...field}
-                                            />
-                                        </FormControl>
-                                        <FormMessage />
-                                    </FormItem>
-                                )}
-                            />
+                                    <div className="flex flex-col md:flex-row gap-4">
+                                        <FormField
+                                            control={form.control}
+                                            name="age"
+                                            render={({ field }) => (
+                                                <FormItem className="flex-1">
+                                                    <FormLabel>Age</FormLabel>
+                                                    <FormControl>
+                                                        <Input
+                                                            {...field}
+                                                            type="number"
+                                                            placeholder="25"
+                                                            onChange={(e) =>
+                                                                field.onChange(
+                                                                    Number(
+                                                                        e.target
+                                                                            .value
+                                                                    )
+                                                                )
+                                                            }
+                                                        />
+                                                    </FormControl>
+                                                    <FormMessage />
+                                                </FormItem>
+                                            )}
+                                        />
+                                        <FormField
+                                            control={form.control}
+                                            name="gender"
+                                            render={({ field }) => (
+                                                <FormItem className="flex-1">
+                                                    <FormLabel>
+                                                        Gender
+                                                    </FormLabel>
+                                                    <FormControl>
+                                                        <Input
+                                                            placeholder="Male / Female / Other"
+                                                            {...field}
+                                                        />
+                                                    </FormControl>
+                                                    <FormMessage />
+                                                </FormItem>
+                                            )}
+                                        />
+                                    </div>
 
-                            <FormField
-                                control={form.control}
-                                name="previousTreatment"
-                                render={({ field }) => (
-                                    <FormItem>
-                                        <FormLabel>
-                                            Previous Treatment
-                                        </FormLabel>
-                                        <FormControl>
-                                            <Input
-                                                placeholder="Mention any previous treatments"
-                                                {...field}
-                                            />
-                                        </FormControl>
-                                        <FormMessage />
-                                    </FormItem>
-                                )}
-                            />
+                                    <FormField
+                                        control={form.control}
+                                        name="address"
+                                        render={({ field }) => (
+                                            <FormItem>
+                                                <FormLabel>Address</FormLabel>
+                                                <FormControl>
+                                                    <Input
+                                                        placeholder="123 Street, City, State"
+                                                        {...field}
+                                                    />
+                                                </FormControl>
+                                                <FormMessage />
+                                            </FormItem>
+                                        )}
+                                    />
 
-                            <FormField
-                                control={form.control}
-                                name="medicalHistory"
-                                render={({ field }) => (
-                                    <FormItem>
-                                        <FormLabel>Medical History</FormLabel>
-                                        <FormControl>
-                                            <Input
-                                                placeholder="e.g. Diabetes, Hypertension"
-                                                {...field}
-                                            />
-                                        </FormControl>
-                                        <FormMessage />
-                                    </FormItem>
-                                )}
-                            />
+                                    <FormField
+                                        control={form.control}
+                                        name="symptoms"
+                                        render={({ field }) => (
+                                            <FormItem>
+                                                <FormLabel>Symptoms</FormLabel>
+                                                <FormControl>
+                                                    <Input
+                                                        placeholder="Describe your symptoms"
+                                                        {...field}
+                                                    />
+                                                </FormControl>
+                                                <FormMessage />
+                                            </FormItem>
+                                        )}
+                                    />
 
-                            <FormField
-                                control={form.control}
-                                name="whatsAppNumber"
-                                render={({ field }) => (
-                                    <FormItem>
-                                        <FormLabel>What's App Number</FormLabel>
-                                        <FormControl>
-                                            <Input
-                                                placeholder="e.g. 9876543210"
-                                                {...field}
-                                            />
-                                        </FormControl>
-                                        <FormMessage />
-                                    </FormItem>
-                                )}
-                            />
+                                    <FormField
+                                        control={form.control}
+                                        name="whatsAppNumber"
+                                        render={({ field }) => (
+                                            <FormItem>
+                                                <FormLabel>
+                                                    What's App Number
+                                                </FormLabel>
+                                                <FormControl>
+                                                    <Input
+                                                        placeholder="e.g. 9876543210"
+                                                        {...field}
+                                                    />
+                                                </FormControl>
+                                                <FormMessage />
+                                            </FormItem>
+                                        )}
+                                    />
 
-                            <Button type="submit" className="w-full">
-                                Proceed
-                            </Button>
-                        </form>
-                    )}
+                                    <Button type="submit" className="w-full">
+                                        Proceed
+                                    </Button>
+                                </form>
+                            </motion.h1>
+                        )}
 
-                    {step === 2 && (
-                        <form
-                            className="space-y-6"
-                        >
-                            <h2 className="text-2xl font-semibold text-center text-blue-700">
-                                Choose Appointment Date & Time
-                            </h2>
+                        {step === 2 && (
+                            <motion.div
+                                key="step2"
+                                initial={{ opacity: 0, x: -40 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                exit={{ opacity: 0, x: 40 }}
+                                transition={{ duration: 0.4 }}
+                            >
+                                <form className="space-y-6">
+                                    <h2 className="text-2xl font-semibold text-center text-blue-700">
+                                        Choose Appointment Date & Time
+                                    </h2>
 
-                            <div className="flex flex-col items-center gap-6">
-                                <Calendar
-                                    mode="single"
-                                    selected={selectedDate}
-                                    onSelect={(date) =>
-                                        date && setSelectedDate(date)
-                                    }
-                                    fromDate={new Date()}
-                                />
+                                    <div className="flex flex-col items-center gap-6">
+                                        <Calendar
+                                            mode="single"
+                                            selected={selectedDate}
+                                            onSelect={(date) =>
+                                                date && setSelectedDate(date)
+                                            }
+                                            fromDate={new Date()}
+                                        />
 
-                                <div className="w-full max-w-sm mx-auto">
-                                    <FormItem>
-                                        <FormLabel>Choose Time Slot</FormLabel>
-                                        <FormControl>
-                                            <Select
-                                                value={selectedTime}
-                                                onValueChange={setSelectedTime}
-                                                defaultValue=""
-                                            >
-                                                <SelectTrigger className="w-full text-xl">
-                                                    <SelectValue placeholder="Select Time Slot" />
-                                                </SelectTrigger>
-                                                <SelectContent>
-                                                    {[
-                                                        "9-10",
-                                                        "11-12",
-                                                        "1-2",
-                                                        "3-4",
-                                                        "5-6",
-                                                    ].map((slot) => (
-                                                        <SelectItem
-                                                            key={slot}
-                                                            value={slot}
-                                                            className="text-lg"
-                                                        >
-                                                            {slot}
-                                                        </SelectItem>
-                                                    ))}
-                                                </SelectContent>
-                                            </Select>
-                                        </FormControl>
-                                    </FormItem>
+                                        <div className="w-full max-w-sm mx-auto">
+                                            <FormItem>
+                                                <FormLabel>
+                                                    Choose Time Slot
+                                                </FormLabel>
+                                                <FormControl>
+                                                    <Select
+                                                        value={selectedTime}
+                                                        onValueChange={
+                                                            setSelectedTime
+                                                        }
+                                                        defaultValue=""
+                                                    >
+                                                        <SelectTrigger className="w-full text-xl">
+                                                            <SelectValue placeholder="Select Time Slot" />
+                                                        </SelectTrigger>
+                                                        <SelectContent>
+                                                            {[
+                                                                "9am - 10am",
+                                                                "11am - 12am",
+                                                                "1pm - 2pm",
+                                                                "3pm - 4pm",
+                                                                "5pm - 6pm",
+                                                            ].map((slot) => (
+                                                                <SelectItem
+                                                                    key={slot}
+                                                                    value={slot}
+                                                                    className="text-lg"
+                                                                >
+                                                                    {slot}
+                                                                </SelectItem>
+                                                            ))}
+                                                        </SelectContent>
+                                                    </Select>
+                                                </FormControl>
+                                            </FormItem>
+                                        </div>
+                                    </div>
+
+                                    <div className="flex justify-between">
+                                        <Button
+                                            variant="outline"
+                                            type="button"
+                                            onClick={() => setStep(1)}
+                                            className="w-full sm:w-auto"
+                                        >
+                                            Back
+                                        </Button>
+                                        <Button
+                                            type="button"
+                                            disabled={
+                                                !selectedDate || !selectedTime
+                                            }
+                                            className="w-full sm:w-auto"
+                                            onClick={() => setStep(3)}
+                                        >
+                                            Proceed
+                                        </Button>
+                                    </div>
+                                </form>
+                            </motion.div>
+                        )}
+
+                        {step === 3 && (
+                            <motion.div
+                                key="step3"
+                                initial={{ opacity: 0, x: -40 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                exit={{ opacity: 0, x: 40 }}
+                                transition={{ duration: 0.4 }}
+                            >
+                                <div className="space-y-6">
+                                    <h2 className="text-2xl font-semibold text-center text-blue-700">
+                                        Payment Summary
+                                    </h2>
+                                    <div className="text-center">
+                                        <p>
+                                            Please proceed with the payment to
+                                            book your appoinment
+                                        </p>
+                                    </div>
+
+                                    {/* Payment Summary */}
+                                    <div className="text-center">
+                                        <p className="text-xl font-semibold">
+                                            Total Amount: ₹{amount}
+                                        </p>{" "}
+                                        {/* Random amount in INR */}
+                                    </div>
+
+                                    {/* Promo Code Input */}
+                                    <div className="flex justify-center items-center space-x-4">
+                                        <input
+                                            type="text"
+                                            placeholder="Enter Promo Code"
+                                            className="border border-gray-300 px-4 py-2 rounded-lg"
+                                            onChange={(e) =>
+                                                setPromoCode(e.target.value)
+                                            } // Assuming setPromoCode updates state for promo code
+                                        />
+
+                                        <Button
+                                            onClick={handleApplyPromoCode}
+                                            className="bg-blue-700 text-white px-4 py-2 rounded-lg"
+                                        >
+                                            Apply
+                                        </Button>
+                                    </div>
+
+                                    {/* Proceed to Payment Button */}
+                                    <div className="flex justify-around">
+                                        <Button
+                                            variant="outline"
+                                            type="button"
+                                            onClick={() => setStep(2)}
+                                            className="w-full sm:w-auto"
+                                        >
+                                            Back
+                                        </Button>
+                                        <Button
+                                            disabled={isPending}
+                                            onClick={createOrder}
+                                            className="w-full sm:w-auto bg-green-600 text-white px-6 py-2 rounded-lg"
+                                        >
+                                            Proceed to Payment
+                                        </Button>
+                                    </div>
                                 </div>
-                            </div>
-
-                            <div className="flex justify-between">
-                                <Button
-                                    variant="outline"
-                                    type="button"
-                                    onClick={() => setStep(1)}
-                                    className="w-full sm:w-auto"
-                                >
-                                    Back
-                                </Button>
-                                <Button
-                                    type="button"
-                                    disabled={!selectedDate || !selectedTime}
-                                    className="w-full sm:w-auto"
-                                    onClick={() => setStep(3)}
-                                >
-                                    Proceed
-                                </Button>
-                            </div>
-                        </form>
-                    )}
-
-                    {step === 3 && (
-                        <div className="space-y-6">
-                            <h2 className="text-2xl font-semibold text-center text-blue-700">
-                                Payment Summary
-                            </h2>
-                            <div className="text-center">
-                                <p>
-                                    Please proceed with the payment to book your
-                                    appoinment
-                                </p>
-                            </div>
-
-                            {/* Payment Summary */}
-                            <div className="text-center">
-                                <p className="text-xl font-semibold">
-                                    Total Amount: ₹{amount}
-                                </p>{" "}
-                                {/* Random amount in INR */}
-                            </div>
-
-                            {/* Promo Code Input */}
-                            <div className="flex justify-center items-center space-x-4">
-                                <input
-                                    type="text"
-                                    placeholder="Enter Promo Code"
-                                    className="border border-gray-300 px-4 py-2 rounded-lg"
-                                    onChange={(e) =>
-                                        setPromoCode(e.target.value)
-                                    } // Assuming setPromoCode updates state for promo code
-                                />
-
-                                <Button
-                                    onClick={handleApplyPromoCode}
-                                    className="bg-blue-700 text-white px-4 py-2 rounded-lg"
-                                >
-                                    Apply
-                                </Button>
-                            </div>
-
-                            {/* Proceed to Payment Button */}
-                            <div className="flex justify-around">
-                                <Button
-                                    variant="outline"
-                                    type="button"
-                                    onClick={() => setStep(2)}
-                                    className="w-full sm:w-auto"
-                                >
-                                    Back
-                                </Button>
-                                <Button
-                                    disabled={isPending}
-                                    onClick={createOrder}
-                                    className="w-full sm:w-auto bg-green-600 text-white px-6 py-2 rounded-lg"
-                                >
-                                    Proceed to Payment
-                                </Button>
-                            </div>
-                        </div>
-                    )}
-                </Form>
+                            </motion.div>
+                        )}
+                    </Form>
+                </div>
             </div>
-        </div>
+        </>
     );
 }
 

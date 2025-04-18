@@ -37,14 +37,13 @@ export default async function SignIn() {
                     >
                         <Button
                             type="submit"
-                            className="w-full py-4 sm:py-5 text-base sm:text-lg flex items-center justify-center gap-3 mb-4"
+                            className="cursor-pointer w-full py-4 sm:py-5 text-base sm:text-lg flex items-center justify-center gap-3 mb-4 
+    bg-black text-white hover:bg-neutral-800 transition-all duration-200"
                         >
                             <GoogleIcon className="w-5 h-5 sm:w-6 sm:h-6" />
                             Sign in with Google
                         </Button>
                     </form>
-
-                  
                 </div>
             </div>
         </section>

@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { useSession } from "next-auth/react";
-import { usePathname } from "next/navigation"; 
+import { signOut, useSession } from "next-auth/react";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { Button } from "./ui/button";
 import {
@@ -19,6 +19,7 @@ import {
     Calendar,
     Menu,
     X,
+    Loader2Icon,
 } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 
@@ -51,19 +52,26 @@ const navlinks: navlinkType[] = [
 ];
 
 const Navbar = () => {
-    const { data: session } = useSession();
-    const pathname = usePathname(); 
+    const { data: session, status } = useSession();
+    const pathname = usePathname();
     const [menuOpen, setMenuOpen] = useState(false);
 
+    if (status === "loading") {
+        return null;
+    }
     console.log("Session: ", session);
+
+    const profileImage = session?.user?.image
 
     return (
         <nav className="fixed top0 left-0 right-0 bg-white/90 backdrop:blur-sm z-50 border-b border-gray-100 shadow-sm">
             <div className="w-full container mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8 md:h-20 h-16">
                 {/* logo */}
                 <div className="flex items-center gap-1 cursor-pointer">
-                    <div className="font-bold text-2xl ">Upasana</div>
-                    <div className="font-black text-2xl text-blue-500">
+                    <div className="font-bold text-2xl text-[#0C6170] ">
+                        Upasana
+                    </div>
+                    <div className="font-medium text-2xl text-[#37BEB0]">
                         Homoeo
                     </div>
                 </div>
@@ -116,11 +124,9 @@ const Navbar = () => {
                             <DropdownMenu>
                                 <DropdownMenuTrigger className="flex items-center gap-1 px-4 py-2 rounded-lg cursor-pointer transition-all duration-200">
                                     <img
-                                        src={
-                                            session.user.image ||
-                                            "/default-avatar.jpg"
-                                        }
-                                        alt=""
+                                        src={profileImage && profileImage.trim() !== "" ? profileImage : "/default-avatar.jpg"}
+
+                                        alt="Profile"
                                         className="w-10 h-10 rounded-full"
                                     />
                                     <ChevronDown className="w-4 h-4" />
@@ -128,22 +134,24 @@ const Navbar = () => {
                                 <DropdownMenuContent className="w-56">
                                     <DropdownMenuItem asChild>
                                         <Link
-                                            href="/profile"
+                                            href="/myappointments"
                                             className="flex items-center px-4 py-2 rounded-md hover:bg-blue-200/60"
                                         >
                                             <User className="mr-2 w-5 h-5" />
-                                            Profile
+                                            My Appointments
                                         </Link>
                                     </DropdownMenuItem>
 
-                                    <DropdownMenuItem asChild>
-                                        <Link
-                                            href="/api/auth/signout"
-                                            className="flex items-center text-red-500 hover:text-white hover:bg-red-500 px-4 py-2 rounded-md"
-                                        >
-                                            <LogOut className="mr-2 w-5 h-5" />
-                                            Logout
-                                        </Link>
+                                    <DropdownMenuItem
+                                        onClick={
+                                            () => signOut()
+
+                                            //add a window reloadQ
+                                        }
+                                        className="flex items-center text-red-500 hover:text-white hover:bg-red-500 px-4 py-2 rounded-md cursor-pointer"
+                                    >
+                                        <LogOut className="mr-2 w-5 h-5" />
+                                        Logout
                                     </DropdownMenuItem>
                                 </DropdownMenuContent>
                             </DropdownMenu>
@@ -188,18 +196,17 @@ const Navbar = () => {
                         {/* Mobile Menu Items */}
                         <ul className="space-y-6 text-2xl font-semibold mt-2">
                             {navlinks.map((link, index) => (
-                                <li key={index}>
-                                    <Link
-                                        href={link.link}
-                                        className={`flex items-center gap-3 px-4 py-2 rounded-lg transition-all duration-200 ${
-                                            pathname === link.link
-                                                ? "text-blue-600 bg-blue-100"
-                                                : "text-gray-700 hover:text-blue-600 hover:bg-blue-100"
-                                        }`}
-                                        onClick={() => setMenuOpen(false)}
+                                <li>
+                                    <button
+                                        onClick={() => {
+                                            setMenuOpen(false);
+                                            signOut({ callbackUrl: "/" });
+                                        }}
+                                        className="flex items-center gap-3 mt-3 px-4 py-2 rounded-lg text-red-500 hover:bg-red-700 hover:text-white transition-all duration-200 w-full text-left"
                                     >
-                                        {link.name}
-                                    </Link>
+                                        <LogOut className="w-5 h-5" />
+                                        Logout
+                                    </button>
                                 </li>
                             ))}
 
@@ -222,20 +229,20 @@ const Navbar = () => {
                                             </Link>
                                         )}
                                         <Link
-                                            href="/profile"
+                                            href="/myappointemts"
                                             className={`flex items-center gap-3 px-4 py-2 rounded-lg transition-all duration-200 ${
-                                                pathname === "/profile"
+                                                pathname === "/myappointments"
                                                     ? "text-blue-600 bg-blue-100"
                                                     : "text-gray-700 hover:text-blue-600 hover:bg-blue-100"
                                             }`}
-                                            onClick={() => setMenuOpen(false)} 
+                                            onClick={() => setMenuOpen(false)}
                                         >
-                                            Profile
+                                            My appointments
                                         </Link>
                                         <Link
                                             href="/api/auth/signout"
                                             className="flex items-center gap-3 mt-3 px-4 py-2 rounded-lg text-red-500 hover:bg-red-700 hover:text-white transition-all duration-200"
-                                            onClick={() => setMenuOpen(false)} 
+                                            onClick={() => setMenuOpen(false)}
                                         >
                                             Logout
                                         </Link>
@@ -244,7 +251,7 @@ const Navbar = () => {
                                     <Link href="/sign-in">
                                         <Button
                                             className="w-full bg-blue-700 hover:bg-blue-800 text-white mt-4"
-                                            onClick={() => setMenuOpen(false)} 
+                                            onClick={() => setMenuOpen(false)}
                                         >
                                             Sign-In
                                         </Button>

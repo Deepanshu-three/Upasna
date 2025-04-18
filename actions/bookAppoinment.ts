@@ -9,8 +9,6 @@ interface Props {
   address: string;
   symptoms: string;
   gender: string;
-  previousTreatment: string;
-  medicalHistory: string;
   appointmentDate: Date;
   appointmentTime: string;
   email: string;
@@ -21,7 +19,7 @@ interface Props {
 export async function BookAppointment(data: Props) {
   const { appointmentDate, appointmentTime, userId } = data;
 
-  const dateOnly = new Date(data.appointmentDate);
+  const dateOnly = new Date(appointmentDate);
   dateOnly.setHours(0, 0, 0, 0);
 
   // Step 1: Check if an appointment already exists at that date + time
@@ -47,8 +45,6 @@ export async function BookAppointment(data: Props) {
       address: data.address,
       symptoms: data.symptoms,
       gender: data.gender,
-      previousTreatment: data.previousTreatment,
-      medicalHistory: data.medicalHistory,
       appointmentDate: dateOnly,
       appointmentTime: appointmentTime,
       email: data.email,
