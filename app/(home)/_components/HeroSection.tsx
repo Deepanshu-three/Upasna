@@ -12,8 +12,7 @@ import {
 import Image from "next/image";
 import Autoplay from "embla-carousel-autoplay";
 import { motion, AnimatePresence } from "framer-motion";
-import React, { use, useEffect, useState } from "react";
-import { toast } from "sonner";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
 const fadeInUp = {

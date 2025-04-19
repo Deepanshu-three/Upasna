@@ -15,11 +15,9 @@ import {
     ChevronDown,
     User,
     LogOut,
-    Home,
-    Calendar,
+
     Menu,
     X,
-    Loader2Icon,
 } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 

@@ -2,7 +2,6 @@
 
 import { format } from "date-fns";
 import { useEffect, useState } from "react";
-import { Separator } from "@/components/ui/separator";
 import {
   User,
   Cake,

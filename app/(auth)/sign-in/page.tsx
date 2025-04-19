@@ -1,7 +1,6 @@
 import { auth, signIn } from "@/auth";
 import { Button } from "@/components/ui/button";
 import { redirect } from "next/navigation";
-import Link from "next/link"; // Import Link from Next.js for navigation
 
 export default async function SignIn() {
     const user = await auth();
