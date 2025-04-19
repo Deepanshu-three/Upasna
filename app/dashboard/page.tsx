@@ -75,7 +75,7 @@ export default function DashboardPage() {
           <p className="text-2xl sm:text-3xl font-semibold">{appointments.length}</p>
         </div>
         <div className="p-4 bg-green-100 rounded-xl shadow text-center">
-          <h2 className="text-lg sm:text-xl font-bold text-green-900">Today's Appointments</h2>
+          <h2 className="text-lg sm:text-xl font-bold text-green-900">Today&apos;s Appointments</h2>
           <p className="text-2xl sm:text-3xl font-semibold">{todayAppointments.length}</p>
         </div>
       </div>

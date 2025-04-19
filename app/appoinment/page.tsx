@@ -126,9 +126,9 @@ function Page() {
                         ...form.getValues(),
                         appointmentDate: selectedDate,
                         appointmentTime: selectedTime,
-                        email: session?.user.email!,
+                        email: session?.user.email?.toString() || "",
                         phone: "N/A",
-                        userId: session?.user.id!,
+                        userId: session?.user.id!.toString() || "",
                     };
 
                     startTransition(async () => {
@@ -292,7 +292,7 @@ function Page() {
                                         render={({ field }) => (
                                             <FormItem>
                                                 <FormLabel>
-                                                    What's App Number
+                                                    What&apos;s App Number
                                                 </FormLabel>
                                                 <FormControl>
                                                     <Input

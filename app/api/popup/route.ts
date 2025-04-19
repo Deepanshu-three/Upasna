@@ -25,7 +25,7 @@ export async function POST(req: NextRequest){
     return new Response(JSON.stringify({message: "Contact info saved successfully"}), {status: 200});
 }
 
-export async function GET(req: NextRequest){
+export async function GET(){
     const contacts = await db.contactInfo.findMany({
         orderBy: {
             createdAt: "desc"

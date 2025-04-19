@@ -76,7 +76,7 @@ const HeroSection = () => {
                 >
                     Experience holistic healing with natural remedies. At Upasna
                     Homoeo, we provide gentle, effective, and long-lasting
-                    homeopathic treatments that stimulate your body's natural
+                    homeopathic treatments that stimulate your body&apos;s natural
                     defenses—without side effects.
                 </motion.p>
 

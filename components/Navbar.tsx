@@ -50,7 +50,7 @@ const navlinks: navlinkType[] = [
 ];
 
 const Navbar = () => {
-    const { data: session, status } = useSession();
+    const { data: session } = useSession();
     const pathname = usePathname();
     const [menuOpen, setMenuOpen] = useState(false);
 
