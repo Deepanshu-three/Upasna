@@ -107,7 +107,6 @@ model Payment {
 model ContactInfo {
   id            String   @id @default(cuid())
   name          String
-  email         String
   contactNumber String
   city          String
 

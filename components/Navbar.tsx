@@ -34,7 +34,7 @@ const navlinks: navlinkType[] = [
         name: "Home",
     },
     {
-        link: "/appoinment",
+        link: "/appointment",
         name: "Book Appoinment",
     },
     {
@@ -56,12 +56,9 @@ const Navbar = () => {
     const pathname = usePathname();
     const [menuOpen, setMenuOpen] = useState(false);
 
-    if (status === "loading") {
-        return null;
-    }
     console.log("Session: ", session);
 
-    const profileImage = session?.user?.image
+    const profileImage = session?.user?.image || "default-avatar.jpg";
 
     return (
         <nav className="fixed top0 left-0 right-0 bg-white/90 backdrop:blur-sm z-50 border-b border-gray-100 shadow-sm">
@@ -115,18 +112,29 @@ const Navbar = () => {
                     ) : (
                         <div className="flex items-center justify-center">
                             {session?.user.isAdmin && (
-                                <Link href={"/dashboard"}>
-                                    <Button className="cursor-pointer">
-                                        Dashboard
-                                    </Button>
-                                </Link>
+                                <div className="flex items-center gap-4 mr-4">
+                                    <Link href={"/dashboard"}>
+                                        <Button className="cursor-pointer">
+                                            Dashboard
+                                        </Button>
+                                    </Link>
+                                    <Link href={"/popupcontact"}>
+                                        <Button className="cursor-pointer">
+                                           Popup contact
+                                        </Button>
+                                    </Link>
+                                </div>
                             )}
                             <DropdownMenu>
                                 <DropdownMenuTrigger className="flex items-center gap-1 px-4 py-2 rounded-lg cursor-pointer transition-all duration-200">
                                     <img
-                                        src={profileImage && profileImage.trim() !== "" ? profileImage : "/default-avatar.jpg"}
-
-                                        alt="Profile"
+                                        src={
+                                            profileImage &&
+                                            profileImage.trim() !== ""
+                                                ? profileImage
+                                                : "/default-avatar.jpg"
+                                        }
+                                        alt=""
                                         className="w-10 h-10 rounded-full"
                                     />
                                     <ChevronDown className="w-4 h-4" />
@@ -143,11 +151,13 @@ const Navbar = () => {
                                     </DropdownMenuItem>
 
                                     <DropdownMenuItem
-                                        onClick={
-                                            () => signOut()
-
-                                            //add a window reloadQ
-                                        }
+                                        onClick={() => {
+                                            signOut({ callbackUrl: "/" }).then(
+                                                () => {
+                                                    window.location.href = "/";
+                                                }
+                                            );
+                                        }}
                                         className="flex items-center text-red-500 hover:text-white hover:bg-red-500 px-4 py-2 rounded-md cursor-pointer"
                                     >
                                         <LogOut className="mr-2 w-5 h-5" />
@@ -160,6 +170,7 @@ const Navbar = () => {
                 </div>
             </div>
 
+            {/* mobile responsive */}
             {/* mobile responsive */}
             <AnimatePresence>
                 {menuOpen && (
@@ -196,17 +207,18 @@ const Navbar = () => {
                         {/* Mobile Menu Items */}
                         <ul className="space-y-6 text-2xl font-semibold mt-2">
                             {navlinks.map((link, index) => (
-                                <li>
-                                    <button
-                                        onClick={() => {
-                                            setMenuOpen(false);
-                                            signOut({ callbackUrl: "/" });
-                                        }}
-                                        className="flex items-center gap-3 mt-3 px-4 py-2 rounded-lg text-red-500 hover:bg-red-700 hover:text-white transition-all duration-200 w-full text-left"
+                                <li key={index}>
+                                    <Link
+                                        href={link.link}
+                                        className={`flex items-center gap-3 px-4 py-2 rounded-lg transition-all duration-200 ${
+                                            pathname === link.link
+                                                ? "text-blue-600 bg-blue-100"
+                                                : "text-gray-700 hover:text-blue-600 hover:bg-blue-100"
+                                        }`}
+                                        onClick={() => setMenuOpen(false)}
                                     >
-                                        <LogOut className="w-5 h-5" />
-                                        Logout
-                                    </button>
+                                        {link.name}
+                                    </Link>
                                 </li>
                             ))}
 
@@ -214,22 +226,39 @@ const Navbar = () => {
                                 {session?.user ? (
                                     <>
                                         {session?.user.isAdmin && (
-                                            <Link
-                                                href="/dashboard"
-                                                className={`flex mb-3 items-center gap-3 px-4 py-2 rounded-lg transition-all duration-200 ${
-                                                    pathname === "/dashboard"
-                                                        ? "text-blue-600 bg-blue-100"
-                                                        : "text-gray-700 hover:text-blue-600 hover:bg-blue-100"
-                                                }`}
-                                                onClick={() =>
-                                                    setMenuOpen(false)
-                                                }
-                                            >
-                                                Dashboard
-                                            </Link>
+                                            <>
+                                                <Link
+                                                    href="/dashboard"
+                                                    className={`flex mb-3 items-center gap-3 px-4 py-2 rounded-lg transition-all duration-200 ${
+                                                        pathname ===
+                                                        "/dashboard"
+                                                            ? "text-blue-600 bg-blue-100"
+                                                            : "text-gray-700 hover:text-blue-600 hover:bg-blue-100"
+                                                    }`}
+                                                    onClick={() =>
+                                                        setMenuOpen(false)
+                                                    }
+                                                >
+                                                    Dashboard
+                                                </Link>
+                                                <Link
+                                                    href="/popupcontact"
+                                                    className={`flex mb-3 items-center gap-3 px-4 py-2 rounded-lg transition-all duration-200 ${
+                                                        pathname ===
+                                                        "/dashboard"
+                                                            ? "text-blue-600 bg-blue-100"
+                                                            : "text-gray-700 hover:text-blue-600 hover:bg-blue-100"
+                                                    }`}
+                                                    onClick={() =>
+                                                        setMenuOpen(false)
+                                                    }
+                                                >
+                                                    Popup Contact
+                                                </Link>
+                                            </>
                                         )}
                                         <Link
-                                            href="/myappointemts"
+                                            href="/myappointments"
                                             className={`flex items-center gap-3 px-4 py-2 rounded-lg transition-all duration-200 ${
                                                 pathname === "/myappointments"
                                                     ? "text-blue-600 bg-blue-100"

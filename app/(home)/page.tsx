@@ -40,7 +40,7 @@ export const metadata = {
 const Home = () => {
   return (
     <main className="space-y-16 pb-10">
-      {/* <HomePopup /> */}
+      <HomePopup />
       <HeroSection />
       <Treatments />
       <WhyChooseSection />

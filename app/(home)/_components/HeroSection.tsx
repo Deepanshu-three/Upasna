@@ -11,8 +11,10 @@ import {
 } from "@/components/ui/carousel";
 import Image from "next/image";
 import Autoplay from "embla-carousel-autoplay";
-import { motion } from "framer-motion";
-import React from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import React, { use, useEffect, useState } from "react";
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 const fadeInUp = {
     hidden: { opacity: 0, y: 20 },
@@ -20,6 +22,19 @@ const fadeInUp = {
 };
 
 const HeroSection = () => {
+
+    const router = useRouter();
+
+    const [isMobile, setIsMobile] = useState(false);
+    const [showNumber, setShowNumber] = useState(false);
+
+    useEffect(() => {
+        const ua = navigator.userAgent.toLowerCase();
+        const mobile =
+            /iphone|ipod|android|blackberry|mini|windows\sce|palm/i.test(ua);
+        setIsMobile(mobile);
+    }, []);
+
     return (
         <section
             className="flex flex-col md:flex-row items-center justify-between px-4 sm:px-8 md:px-20 py-10 min-h-[90vh] gap-8 md:gap-16"
@@ -75,17 +90,45 @@ const HeroSection = () => {
                         variant={"secondary"}
                         className="h-12 px-6 sm:px-8 text-base sm:text-lg rounded-lg shadow-md bg-[#0C6170]  text-white hover:bg-[#04363d] cursor-pointer"
                         aria-label="Book online appointment with Upasna Homoeo in Ajmer"
+                        onClick={() => {
+                            router.push("/appointment");
+                        }}
                     >
                         Book Appointment Online
                     </Button>
                     <span className="hidden sm:inline text-gray-500">OR</span>
-                    <Button
-                        variant={"outline"}
-                        className="h-12 px-6 sm:px-8 text-base sm:text-lg rounded-lg shadow-md border border-[#0C6170] text-[#0C6170] hover:bg-[#0C6170] hover:text-white transition"
-                        aria-label="Call Upasna Homoeo Clinic"
-                    >
-                        Call
-                    </Button>
+                    {isMobile ? (
+                        <a
+                            href="tel:+919999999999"
+                            className="h-12 px-6 sm:px-8 text-base sm:text-lg rounded-lg shadow-md border border-[#0C6170] text-[#0C6170] hover:bg-[#0C6170] hover:text-white transition flex items-center justify-center min-w-[220px]"
+                            aria-label="Call Upasna Homoeo Clinic"
+                        >
+                            Call Now
+                        </a>
+                    ) : (
+                        <motion.button
+                            onClick={() => setShowNumber(!showNumber)}
+                            className="cursor-pointer h-12 px-6 text-base sm:text-lg rounded-lg shadow-md border border-[#0C6170] text-[#0C6170] hover:bg-[#0C6170] hover:text-white transition flex items-center justify-center min-w-[220px] relative overflow-hidden"
+                            aria-label="Reveal phone number"
+                            whileTap={{ scale: 0.97 }}
+                            whileHover={{ scale: 1.03 }}
+                        >
+                            <AnimatePresence mode="wait">
+                                <motion.span
+                                    key={showNumber ? "shownumber" : "call"}
+                                    initial={{ opacity: 0, y: 10 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    exit={{ opacity: 0, y: -10 }}
+                                    transition={{ duration: 0.3 }}
+                                    className="absolute"
+                                >
+                                    {showNumber
+                                        ? "+91 99999 99999"
+                                        : "Call"}
+                                </motion.span>
+                            </AnimatePresence>
+                        </motion.button>
+                    )}
                 </motion.div>
             </motion.div>
 
