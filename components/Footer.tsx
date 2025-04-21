@@ -7,88 +7,82 @@ import {
 } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { IoLocationSharp } from "react-icons/io5";
+import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="bg-white text-gray-800 px-6 py-10 border-t border-gray-200">
+    <footer className="bg-white text-gray-800 px-6 py-12 border-t border-gray-200">
       <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+        {/* Book Appointment */}
         <div>
-          <h3 className="text-lg sm:text-xl font-semibold text-[#0C6170]">Book Appointment</h3>
-          <ul className="mt-4 space-y-2">
-            <li><a href="#" className="text-sm hover:underline">Clinic Consultation</a></li>
-            <li><a href="#" className="text-sm hover:underline">Video Consultation</a></li>
-            <li><a href="#" className="text-sm hover:underline">Tele Consultation</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <h3 className="text-lg sm:text-xl font-semibold text-[#0C6170]">Online Consultation</h3>
-          <ul className="mt-4 space-y-2">
-            <li><a href="#" className="text-sm hover:underline">Consult Now</a></li>
-            <li><a href="#" className="text-sm hover:underline">How It Works</a></li>
-            <li><a href="#" className="text-sm hover:underline">FAQs</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <h3 className="text-lg sm:text-xl font-semibold text-[#0C6170]">Instant Call Back</h3>
-          <ul className="mt-4 space-y-2">
-            <li><a href="#" className="text-sm hover:underline">Request a Call</a></li>
-            <li><a href="#" className="text-sm hover:underline">Submit Query</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <h3 className="text-lg sm:text-xl font-semibold text-[#0C6170]">Find Nearest Clinic</h3>
-          <ul className="mt-4 space-y-2">
-            <li><a href="#" className="text-sm hover:underline">Clinic Locator</a></li>
-            <li><a href="#" className="text-sm hover:underline">Top Clinics</a></li>
-            <li><a href="#" className="text-sm hover:underline">City-wise Clinics</a></li>
-          </ul>
-        </div>
-      </div>
-
-      <div className="max-w-7xl mx-auto mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 border-t border-gray-200 pt-8">
-        <div>
-          <h3 className="text-lg sm:text-xl font-semibold text-[#0C6170]">Contact Us</h3>
+          <h3 className="text-xl font-semibold text-[#0C6170]">Book Appointment</h3>
           <ul className="mt-4 space-y-2 text-sm">
-            <li className="flex items-center gap-2"><FaPhoneAlt /> +91 12345 67890</li>
-            <li className="flex items-center gap-2"><MdEmail /> info@example.com</li>
+            <li>
+              <Link href="/appointment" className="hover:underline">Book appointment online</Link>
+            </li>
+          </ul>
+        </div>
+
+        {/* Online Consultation */}
+        <div>
+          <h3 className="text-xl font-semibold text-[#0C6170]">Online Consultation</h3>
+          <ul className="mt-4 space-y-2 text-sm">
+            <li>
+              <Link href="/appointment" className="hover:underline">Consult Now</Link>
+            </li>
+            <li>
+              <Link href="/faqs" className="hover:underline">FAQs</Link>
+            </li>
+          </ul>
+        </div>
+
+        {/* Instant Call Back */}
+        <div>
+          <h3 className="text-xl font-semibold text-[#0C6170]">Instant Call Back</h3>
+          <ul className="mt-4 space-y-2 text-sm">
+            <li>
+              <Link href="/contact" className="hover:underline">Request a Call</Link>
+            </li>
+          </ul>
+        </div>
+
+        {/* Contact Info */}
+        <div>
+          <h3 className="text-xl font-semibold text-[#0C6170]">Contact Us</h3>
+          <ul className="mt-4 space-y-2 text-sm">
+            <li className="flex items-center gap-2"><FaPhoneAlt /> +91 94688 11004</li>
+            <li className="flex items-center gap-2"><MdEmail /> upasnahomeo@gmail.com</li>
             <li className="flex items-center gap-2"><IoLocationSharp /> 123 Clinic Street, City, India</li>
           </ul>
         </div>
+      </div>
 
+      {/* Social and Quick Links */}
+      <div className="max-w-7xl mx-auto mt-12 border-t border-gray-200 pt-8 grid grid-cols-1 md:grid-cols-2 gap-8">
+        {/* Follow Us */}
         <div>
-          <h3 className="text-lg sm:text-xl font-semibold text-[#0C6170]">Follow Us</h3>
-          <div className="flex items-center mt-4 space-x-4">
-            <a href="#" className="text-[#0C6170] text-xl"><FaFacebook /></a>
-            <a href="#" className="text-[#0C6170] text-xl"><FaTwitter /></a>
-            <a href="#" className="text-[#0C6170] text-xl"><FaInstagram /></a>
-            <a href="#" className="text-[#0C6170] text-xl"><FaLinkedin /></a>
+          <h3 className="text-xl font-semibold text-[#0C6170]">Follow Us</h3>
+          <div className="flex items-center mt-4 space-x-4 text-xl text-[#0C6170]">
+            <a href="#"><FaFacebook /></a>
+            <a href="#"><FaTwitter /></a>
+            <a href="#"><FaInstagram /></a>
+            <a href="#"><FaLinkedin /></a>
           </div>
         </div>
 
+        {/* Quick Links */}
         <div>
-          <h3 className="text-lg sm:text-xl font-semibold text-[#0C6170]">Media Centre</h3>
-          <ul className="mt-4 space-y-2">
-            <li><a href="#" className="text-sm hover:underline">News</a></li>
-            <li><a href="#" className="text-sm hover:underline">Press Releases</a></li>
-            <li><a href="#" className="text-sm hover:underline">Events</a></li>
+          <h3 className="text-xl font-semibold text-[#0C6170]">Quick Links</h3>
+          <ul className="mt-4 grid grid-cols-2 gap-2 text-sm">
+            <li><Link href="/policy" className="hover:underline">Privacy Policy</Link></li>
+            <li><Link href="/termsAndCondition" className="hover:underline">Terms & Conditions</Link></li>
+            <li><Link href="/cancillationAndRefund" className="hover:underline">Cancellation Policy</Link></li>
           </ul>
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto mt-10 border-t border-gray-200 pt-8">
-        <h3 className="text-lg sm:text-xl font-semibold text-[#0C6170] mt-6">Quick Links</h3>
-        <ul className="mt-4 grid grid-cols-2 sm:grid-cols-4 gap-4 text-sm">
-          <li><a href="#" className="hover:underline">Privacy Policy</a></li>
-          <li><a href="#" className="hover:underline">Terms & Conditions</a></li>
-          <li><a href="#" className="hover:underline">Careers</a></li>
-          <li><a href="#" className="hover:underline">Blog</a></li>
-        </ul>
-      </div>
-
-      <div className="max-w-7xl mx-auto mt-10 text-center text-sm text-gray-500">
+      {/* Bottom Note */}
+      <div className="max-w-7xl mx-auto mt-12 text-center text-sm text-gray-500">
         <p>&copy; 2025 <span className="text-[#0C6170] font-medium">Upasana Homoe</span>. All rights reserved.</p>
         <p className="mt-2">Developed with ❤️ by Upasana Homoe Team</p>
       </div>
