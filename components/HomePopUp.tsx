@@ -17,7 +17,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { popupSchema } from "@/app/schema/popupSchema";
 import { toast } from "sonner";
 
-
 const HomePopup = () => {
   const [showPopup, setShowPopup] = useState(false);
 
@@ -30,10 +29,8 @@ const HomePopup = () => {
     },
   });
 
-  const onSubmit = async(values: z.infer<typeof popupSchema>) => {
-
+  const onSubmit = async (values: z.infer<typeof popupSchema>) => {
     try {
-      
       const res = await fetch("/api/popup", {
         method: "POST",
         headers: {
@@ -42,23 +39,20 @@ const HomePopup = () => {
         body: JSON.stringify(values),
       });
 
-      if(!res.ok) {
+      if (!res.ok) {
         toast.error("Something went wrong");
         return;
-      }else{
+      } else {
         toast.success("We will contact you soon");
         setShowPopup(false);
         form.reset();
       }
-
-
     } catch (error) {
       toast.error("Something went wrong");
       console.error(error);
-    }finally{
+    } finally {
       setShowPopup(false);
     }
-    
   };
 
   useEffect(() => {
@@ -71,11 +65,14 @@ const HomePopup = () => {
   if (!showPopup) return null;
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-      <div className="bg-white w-full max-w-md p-6 rounded-2xl shadow-xl">
+    <div className="fixed inset-0 bg-transparent flex items-center justify-center z-50 p-4 overflow-auto">
+      {/* Transparent background without black overlay */}
+      <div className="absolute inset-0 bg-transparent pointer-events-auto" />
+      
+      <div className="relative bg-white w-full max-w-md p-6 rounded-2xl shadow-xl z-10">
         <h2 className="text-2xl font-bold mb-4 text-center"> Get Instant Callback!</h2>
         <p className="mb-4 text-center text-sm text-gray-600">
-          Please out this short form.
+          Please fill out this short form.
         </p>
 
         <Form {...form}>

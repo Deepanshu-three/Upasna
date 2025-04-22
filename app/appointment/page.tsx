@@ -374,7 +374,7 @@ function Page() {
                                         </div>
                                     </div>
 
-                                    <div className="flex justify-between">
+                                    <div className="flex md:flex-row flex-col justify-between">
                                         <Button
                                             variant="outline"
                                             type="button"
@@ -445,7 +445,7 @@ function Page() {
                                     </div>
 
                                     {/* Proceed to Payment Button */}
-                                    <div className="flex justify-around">
+                                    <div className="flex justify-around md:flex-row flex-col">
                                         <Button
                                             variant="outline"
                                             type="button"

@@ -20,10 +20,26 @@ const fadeInUp = {
     show: { opacity: 1, y: 0, transition: { duration: 0.6 } },
 };
 
+const treatmentResults = [
+    {
+        before: "/beforeAndAfter/Psoriasis_Before_1.JPG",
+        after: "/beforeAndAfter/Psoriasis_After_1.JPG",
+        condition: "Psoriasis",
+    },
+    {
+        before: "/beforeAndAfter/Psoriasis_Before_2.jpeg",
+        after: "/beforeAndAfter/Psoriasis_After_2.JPG",
+        condition: "Psoriasis",
+    },
+    {
+        before: "/beforeAndAfter/Sebaceous_Before.JPG",
+        after: "/beforeAndAfter/Sebaceous_acne.JPG",
+        condition: "Sebaceous Acne",
+    },
+];
+
 const HeroSection = () => {
-
     const router = useRouter();
-
     const [isMobile, setIsMobile] = useState(false);
     const [showNumber, setShowNumber] = useState(false);
 
@@ -36,12 +52,12 @@ const HeroSection = () => {
 
     return (
         <section
-            className="flex flex-col md:flex-row items-center justify-between px-4 sm:px-8 md:px-20 py-10 min-h-[90vh] gap-8 md:gap-16"
+            className="flex flex-col lg:flex-row items-center justify-between px-4 sm:px-8 lg:px-20 py-10 min-h-[90vh] gap-8 lg:gap-16"
             aria-label="Upasna Homoeo Hero Section"
         >
             {/* Left Section */}
             <motion.div
-                className="flex-1 text-center md:text-left space-y-6"
+                className="flex-1 text-center lg:text-left space-y-6"
                 initial="hidden"
                 animate="show"
                 variants={{
@@ -54,7 +70,7 @@ const HeroSection = () => {
                 }}
             >
                 <motion.h1
-                    className="text-4xl sm:text-5xl md:text-6xl font-medium text-[#37BEB0] leading-tight"
+                    className="text-4xl sm:text-5xl lg:text-6xl font-medium text-[#37BEB0] leading-tight"
                     variants={fadeInUp}
                 >
                     Welcome to{" "}
@@ -71,7 +87,7 @@ const HeroSection = () => {
                 </motion.h2>
 
                 <motion.p
-                    className="text-base sm:text-lg text-[#0C6170] max-w-xl mx-auto md:mx-0"
+                    className="text-base sm:text-lg text-[#0C6170] max-w-xl mx-auto lg:mx-0"
                     variants={fadeInUp}
                 >
                     Experience holistic healing with natural remedies. At Upasna
@@ -82,12 +98,12 @@ const HeroSection = () => {
 
                 {/* CTA Buttons */}
                 <motion.div
-                    className="flex flex-col sm:flex-row items-center gap-4"
+                    className="flex flex-col justify-center  sm:flex-row items-center gap-4"
                     variants={fadeInUp}
                 >
                     <Button
                         variant={"secondary"}
-                        className="h-12 px-6 sm:px-8 text-base sm:text-lg rounded-lg shadow-md bg-[#0C6170]  text-white hover:bg-[#04363d] cursor-pointer"
+                        className="h-12 px-6 sm:px-8 text-base sm:text-lg rounded-lg shadow-md bg-[#0C6170] text-white hover:bg-[#04363d] cursor-pointer"
                         aria-label="Book online appointment with Upasna Homoeo in Ajmer"
                         onClick={() => {
                             router.push("/appointment");
@@ -133,34 +149,44 @@ const HeroSection = () => {
 
             {/* Right Section - Hero Image Carousel */}
             <motion.div
-                className="flex-1 flex justify-center"
+                className="flex-1 flex justify-center items-center"
                 initial={{ opacity: 0, x: 50 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8 }}
             >
                 <Carousel
                     plugins={[Autoplay({ delay: 2000 })]}
-                    className="w-full max-w-lg"
+                    className="w-full max-w-[400px] sm:max-w-xl mx-auto"
                 >
-                    <CarouselContent>
-                        {Array.from({ length: 5 }).map((_, index) => (
-                            <CarouselItem key={index}>
-                                <div className="p-1">
-                                    <Card>
-                                        <CardContent className="flex aspect-square items-center justify-center p-6">
+                    <CarouselContent className="flex">
+                        {treatmentResults.map((result, index) => (
+                            <CarouselItem key={index} className="flex justify-center space-x-4">
+                                <div className="flex items-center space-x-4">
+                                    {/* Before Image */}
+                                    <div className="flex flex-col items-center">
+                                        <figcaption className="text-sm text-gray-500 mt-2 text-center">Before</figcaption>
+                                        <div className="relative w-[240px] h-[480px] overflow-hidden shadow-sm border">
                                             <Image
-                                                src={`/carousel/clinic${
-                                                    index + 1
-                                                }.jpg`}
-                                                alt={`Upasna Homoeo Clinic - Image ${
-                                                    index + 1
-                                                }`}
-                                                width={300}
-                                                height={300}
-                                                className="rounded-md object-cover"
+                                                src={result.before}
+                                                alt=""
+                                                layout="fill"
+                                                className="object-cover"
                                             />
-                                        </CardContent>
-                                    </Card>
+                                        </div>
+                                    </div>
+
+                                    {/* After Image */}
+                                    <div className="flex flex-col items-center">
+                                        <figcaption className="text-sm text-gray-500 mt-2 text-center">After</figcaption>
+                                        <div className="relative w-[240px] h-[480px] overflow-hidden shadow-sm border">
+                                            <Image
+                                                src={result.after}
+                                                alt={`${result.condition} - After`}
+                                                layout="fill"
+                                                className="object-cover"
+                                            />
+                                        </div>
+                                    </div>
                                 </div>
                             </CarouselItem>
                         ))}

@@ -8,32 +8,32 @@ import {
 } from "@/components/ui/carousel";
 import { Card, CardContent } from "@/components/ui/card";
 
-// Sample testimonials for illustration; replace with dynamic data
+// Sample testimonials for Upasana Homoeo
 const testimonials = [
   {
-    name: "Patient 1",
+    name: "Rajesh K.",
     feedback:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et. Mauris posuere ultricies.",
+      "After visiting Upasana Homoeo, I noticed significant improvement in my chronic migraine issues. The doctor took the time to understand my symptoms and provided an effective, natural treatment plan. I feel much better now!",
   },
   {
-    name: "Patient 2",
+    name: "Anjali S.",
     feedback:
-      "Afecto Homeopathy changed my life! The treatments were effective, and the staff was caring.",
+      "I was struggling with digestive issues for months, and Upasana Homoeo's treatment has been a game-changer. Their approach is holistic, and the staff is friendly and supportive throughout the process.",
   },
   {
-    name: "Patient 3",
+    name: "Vikram P.",
     feedback:
-      "I felt much better after treatment, and the doctor's approach was highly professional and empathetic.",
+      "Upasana Homoeo has helped me with my respiratory issues, which have been persistent for years. Their personalized treatment approach and professional care have brought me significant relief.",
   },
   {
-    name: "Patient 4",
+    name: "Priya D.",
     feedback:
-      "My chronic pain is now under control, and I can't thank Afecto Homeopathy enough!",
+      "I highly recommend Upasana Homoeo for anyone looking for effective homeopathic treatments. The staff is caring, and the treatments are gentle yet powerful. It truly feels like a healing environment.",
   },
   {
-    name: "Patient 5",
+    name: "Sandeep T.",
     feedback:
-      "Amazing results! I highly recommend Afecto for anyone looking for natural and effective treatments.",
+      "As someone who has tried multiple treatments, I can confidently say that Upasana Homoeo has been the most effective. The treatments have improved my overall well-being, and the doctors are highly knowledgeable.",
   },
 ];
 
@@ -42,11 +42,11 @@ const Testimonials = () => {
     <section className="px-4 sm:px-6 md:px-10 py-16 space-y-10">
       {/* Section Heading */}
       <header className="text-center space-y-4">
-        <h2 className="text-3xl sm:text-4xl font-bold text-blue-600">
+        <h2 className="text-3xl sm:text-4xl font-medium text-[#0C6170]">
           What Our Patients Say
         </h2>
         <p className="text-base sm:text-lg text-gray-700 max-w-2xl mx-auto">
-          Read the heartfelt feedback from our patients and discover how Afecto Homeopathy has helped them achieve health and balance.
+          Read the heartfelt feedback from our patients and discover how Upasana Homoeo has helped them achieve health and balance.
         </p>
       </header>
 

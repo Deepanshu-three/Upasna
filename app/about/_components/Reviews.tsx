@@ -6,51 +6,37 @@ import { Card, CardContent } from "@/components/ui/card";
 // ✅ Unique, real testimonials (removed duplicate)
 const testimonials = [
   {
-    name: "Gauri Singh",
-    time: "6 months ago",
+    name: "Kshitiz Singh",
+    time: "5 months ago",
     rating: 5,
-    feedback: "I got my treatment for acne from Afecto clinic. The results were amazing.",
+    feedback: "Best Homopethic dr in ajmer cured my dengue in 2 days with just 40k platelets remaining the best for all provides treatment with the medicinal and natural both ways and is always helpful and very kind hearted to the patient",
+    image: "/review/unnamed.png"
   },
   {
-    name: "Pooja Burman",
-    time: "7 months ago",
-    rating: 5,
-    feedback:
-      "I had been suffering from severe back pain for months, then I took treatment from Afecto. The treatment plan was effective. Highly recommend Afecto Homeopathy!",
-  },
-  {
-    name: "Archi Singhal",
-    time: "7 months ago",
-    rating: 4,
-    feedback:
-      "Doctor Sukriti and the staff were very kind. Only homeopathy helped, and Dr. Sukriti listened patiently with a smile. Highly recommended!",
-  },
-  {
-    name: "Prince Parashar",
-    time: "7 months ago",
-    rating: 5,
-    feedback: "I had been struggling with migraines for years. The doctors are experienced and caring.",
-  },
-  {
-    name: "Devender Kumar",
-    time: "1 year ago",
-    rating: 5,
-    feedback: "Best doctors and supporting staff.",
-  },
-  {
-    name: "Parmeshwar Panwar",
-    time: "1 year ago",
+    name: "Sonali Sen",
+    time: "2 years ago",
     rating: 5,
     feedback:
-      "Good work! The doctors are cooperative, and the staff is very helpful. They helped me cure my chronic skin problem.",
+      "Dr. Alok sir is very good and very smartly talking with us the treatment is also very nice ✌️",
+
+    image: "/review/default-avatar.jpg"
   },
   {
-    name: "Naresh Chand",
-    time: "1 year ago",
-    rating: 4,
+    name: "ANUJ GARG",
+    time: "a year ago",
+    rating: 5,
     feedback:
-      "Taking treatment for hydrocele from Dr. Mansha. My symptoms are much better. Thank you, Afecto family!",
+      "Polite, intelligent,helpful.",
+    image: "/review/images.png"
+    },
+  {
+    name: "parul mathur",
+    time: "2 years ago",
+    rating: 5,
+    feedback: "HE IS THE BEST DOCTOR",
+    image: "/review/p.webp"
   },
+  
 ];
 
 const Reviews = () => {
@@ -58,7 +44,7 @@ const Reviews = () => {
     <section className="px-4 sm:px-6 md:px-10 py-16 space-y-10 max-w-7xl mx-auto">
       {/* Section Heading */}
       <header className="text-center space-y-4">
-        <h2 className="text-3xl sm:text-4xl font-bold text-blue-600">
+        <h2 className="text-3xl sm:text-4xl font-medium text-[#0C6170]">
           Why Patients Prefer Upasana Homeopathy® Clinic?
         </h2>
         <p className="text-base sm:text-lg text-gray-700 max-w-2xl mx-auto">
@@ -77,11 +63,11 @@ const Reviews = () => {
               {/* Logo + Stars */}
               <div className="flex justify-between items-center">
                 <Image
-                  src="/google-logo.png"
+                  src={t.image || ""}
                   alt="Google review"
                   width={20}
                   height={20}
-                  className="object-contain"
+                  className="object-contain rounded-full w-10 h-10"
                 />
                 <div className="flex text-yellow-500">
                   {[...Array(t.rating)].map((_, i) => (

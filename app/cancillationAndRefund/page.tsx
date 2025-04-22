@@ -34,7 +34,7 @@ const RefundAndCancellationPage = () => {
           >
             At Upasana Homoeo, we strive to provide the best care and experience
             to our patients. We understand that sometimes appointments may need
-            to be cancelled, and we've outlined a fair policy below.
+            to be cancelled, and we&apos;ve outlined a fair policy below.
           </motion.p>
 
           <motion.h2
