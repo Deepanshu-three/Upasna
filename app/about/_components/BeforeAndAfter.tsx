@@ -1,6 +1,5 @@
 import React from "react";
 import Image from "next/image";
-import { Button } from "@/components/ui/button";
 
 const treatmentResults = [
   { before: "/beforeAndAfter/Psoriasis_Before_1.JPG", after: "/beforeAndAfter/Psoriasis_After_1.JPG", condition: "Psoriasis" },
