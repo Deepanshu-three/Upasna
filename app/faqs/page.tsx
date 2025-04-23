@@ -55,7 +55,7 @@ const faqs = [
 const FAQs = () => {
   return (
     <motion.div
-      className="min-h-screen flex flex-col justify-center p-10"
+      className="min-h-screen flex flex-col justify-center"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}

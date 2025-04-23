@@ -164,7 +164,7 @@ const HeroSection = () => {
                                     {/* Before Image */}
                                     <div className="flex flex-col items-center">
                                         <figcaption className="text-sm text-gray-500 mt-2 text-center">Before</figcaption>
-                                        <div className="relative w-[240px] h-[480px] overflow-hidden shadow-sm border">
+                                        <div className="relative h-[400px] w-[180px]  md:w-[240px] md:h-[480px] overflow-hidden shadow-sm border">
                                             <Image
                                                 src={result.before}
                                                 alt=""
@@ -177,7 +177,7 @@ const HeroSection = () => {
                                     {/* After Image */}
                                     <div className="flex flex-col items-center">
                                         <figcaption className="text-sm text-gray-500 mt-2 text-center">After</figcaption>
-                                        <div className="relative w-[240px] h-[480px] overflow-hidden shadow-sm border">
+                                        <div className="relative h-[400px] w-[180px] md:w-[240px] md:h-[480px] overflow-hidden shadow-sm border">
                                             <Image
                                                 src={result.after}
                                                 alt={`${result.condition} - After`}

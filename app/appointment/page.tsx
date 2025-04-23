@@ -374,7 +374,7 @@ function Page() {
                                         </div>
                                     </div>
 
-                                    <div className="flex md:flex-row flex-col justify-between">
+                                    <div className="flex md:flex-row space-y-2 flex-col justify-between">
                                         <Button
                                             variant="outline"
                                             type="button"
@@ -426,7 +426,7 @@ function Page() {
                                     </div>
 
                                     {/* Promo Code Input */}
-                                    <div className="flex justify-center items-center space-x-4">
+                                    <div className="flex space-y-2 flex-col md:flex-row justify-center items-center space-x-4">
                                         <input
                                             type="text"
                                             placeholder="Enter Promo Code"
@@ -445,7 +445,7 @@ function Page() {
                                     </div>
 
                                     {/* Proceed to Payment Button */}
-                                    <div className="flex justify-around md:flex-row flex-col">
+                                    <div className="flex space-y-2 justify-around md:flex-row flex-col">
                                         <Button
                                             variant="outline"
                                             type="button"

@@ -266,13 +266,18 @@ const Navbar = () => {
                                         >
                                             My appointments
                                         </Link>
-                                        <Link
-                                            href="/api/auth/signout"
+                                        <button
                                             className="flex items-center gap-3 mt-3 px-4 py-2 rounded-lg text-red-500 hover:bg-red-700 hover:text-white transition-all duration-200"
-                                            onClick={() => setMenuOpen(false)}
+                                            onClick={() => {
+                                                signOut({ callbackUrl: "/" }).then(
+                                                    () => {
+                                                        window.location.href = "/";
+                                                    }
+                                                );
+                                            }}
                                         >
                                             Logout
-                                        </Link>
+                                        </button>
                                     </>
                                 ) : (
                                     <Link href="/sign-in">
