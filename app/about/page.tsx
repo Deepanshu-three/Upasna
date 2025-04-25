@@ -1,51 +1,12 @@
+"use client"
 import React from "react";
+import { motion } from "framer-motion"; // Import motion
 import Testimonials from "./_components/Testimonials";
 import Reviews from "./_components/Reviews";
 import BeforeAfter from "./_components/BeforeAndAfter";
 
 // ✅ SEO metadata export for App Router
-export const metadata = {
-    title: "Why Choose Us | Upasna Homoeo",
-    description:
-        "Discover why Upasna Homoeo stands out. Led by Dr. Abhinav Verma with 30+ years of experience, we focus on root-cause healing, personalized care, and lasting wellness through homeopathy.",
-    keywords: [
-        "Upasna Homoeo",
-        "Homeopathy Clinic",
-        "Dr. Abhinav Verma",
-        "Best Homeopathy Doctor",
-        "Chronic Disease Treatment",
-        "Holistic Healing",
-        "Lifestyle Disorders",
-        "Natural Treatment",
-        "Alternative Medicine",
-    ],
-    robots: "index, follow",
-    authors: [{ name: "Upasna Homoeo" }],
-    viewport: "width=device-width, initial-scale=1",
-    openGraph: {
-        title: "Why Choose Us | Upasna Homoeo",
-        description:
-            "Upasna Homoeo, led by Dr. Abhinav Verma, provides compassionate and personalized homeopathic treatments. Trusted by 100,000+ patients over 30 years.",
-        url: "https://upasnahomoeo.com/why-us",
-        siteName: "Upasna Homoeo",
-        type: "website",
-        images: [
-            {
-                url: "/og-image.jpg", // Replace with your actual OG image
-                width: 1200,
-                height: 630,
-                alt: "Upasna Homoeo Clinic",
-            },
-        ],
-    },
-    twitter: {
-        card: "summary_large_image",
-        title: "Why Choose Upasna Homoeo",
-        description:
-            "Trusted by thousands, Upasna Homoeo is where compassion meets homeopathy. Learn why families rely on us for healing.",
-        images: ["/og-image.jpg"], // Same as OG image
-    },
-};
+
 
 const Page = () => {
     return (
@@ -53,20 +14,35 @@ const Page = () => {
             <div className="max-w-7xl w-full mx-auto">
                 {/* Heading */}
                 <header className="text-center mb-6">
-                    <h1 className="text-4xl md:text-5xl font-medium text-[#0C6170]">
+                    <motion.h1
+                        className="text-4xl md:text-5xl font-medium text-[#0C6170]"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 1 }}
+                    >
                         Why Upasna Homoeo?
-                    </h1>
-                    <p className="text-lg md:text-xl text-gray-700 leading-relaxed mt-4 mb-16">
+                    </motion.h1>
+                    <motion.p
+                        className="text-lg md:text-xl text-gray-700 leading-relaxed mt-4 mb-16"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 1, delay: 0.3 }}
+                    >
                         At Upasna Homoeo, we take pride in a holistic healing
                         approach. We go beyond treating symptoms — we listen,
                         understand, and tailor treatments that promote total
                         well-being. Our clinic is built around empathy, personal
                         attention, and results that matter to our patients.
-                    </p>
+                    </motion.p>
                 </header>
 
                 {/* Doctor Section */}
-                <section className="flex flex-col lg:flex-row items-center gap-10 mb-10 p-4 sm:p-8 border border-[#0C6170] shadow-xl rounded-xl mx-auto w-full max-w-7xl">
+                <motion.section
+                    className="flex flex-col lg:flex-row items-center gap-10 mb-10 p-4 sm:p-8 border border-[#0C6170] shadow-xl rounded-xl mx-auto w-full max-w-7xl"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 1, delay: 0.5 }}
+                >
                     <div className="w-full lg:w-1/2 flex justify-center">
                         <img
                             src="/docVerma.jpeg"
@@ -111,29 +87,44 @@ const Page = () => {
                             of medicine.
                         </p>
                     </div>
-                </section>
+                </motion.section>
             </div>
 
             {/* Testimonials */}
-            <section className="w-full border border-[#0C6170] shadow-xl py-16 m-4 rounded-xl mb-10">
+            <motion.section
+                className="w-full border border-[#0C6170] shadow-xl py-16 m-4 rounded-xl mb-10"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1, delay: 0.7 }}
+            >
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <Testimonials />
                 </div>
-            </section>
+            </motion.section>
 
             {/* Reviews */}
-            <section className="w-full border border-[#0C6170] shadow-xl rounded-xl mb-10">
+            <motion.section
+                className="w-full border border-[#0C6170] shadow-xl rounded-xl mb-10"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1, delay: 0.9 }}
+            >
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <Reviews />
                 </div>
-            </section>
+            </motion.section>
 
             {/* Before and After */}
-            <section className="w-full border border-[#0C6170] shadow-xl rounded-xl py-16 m-4 mb-20">
+            <motion.section
+                className="w-full border border-[#0C6170] shadow-xl rounded-xl py-16 m-4 mb-20"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1, delay: 1.1 }}
+            >
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <BeforeAfter />
                 </div>
-            </section>
+            </motion.section>
         </main>
     );
 };

@@ -47,60 +47,74 @@ const TermsAndConditionsPage = () => {
                 >
                     {[
                         {
-                            title: "1. Acceptance of Terms",
+                            title: "1. General",
                             content:
-                                "By accessing or using Upasana Homoeo, you agree to be bound by these Terms and Conditions. If you disagree with any part of the terms, you may not access the service.",
+                                "Upasna Homoeo is a homeopathic clinic offering consultation services through online (teleconsultation) and offline modes. These Terms and Conditions apply to all users of our website, online booking system, and consultation services. We reserve the right to update or modify these terms at any time. Updated terms will be posted on this page.",
                         },
                         {
-                            title: "2. Medical Disclaimer",
+                            title: "2. Consultation Services",
                             content:
-                                "All content and services provided through Upasana Homoeo are for informational purposes only and are not a substitute for professional medical advice, diagnosis, or treatment. Always seek the advice of your physician or other qualified health provider.",
+                                "Teleconsultations are conducted based on the information shared by the patient during the case-taking process. No physical examination is conducted during an online consultation. The advice and prescriptions provided are rooted in classical homeopathic principles and individualized to each case. The patient is responsible for providing accurate and complete health information during consultation.",
                         },
                         {
-                            title: "3. User Responsibilities",
+                            title: "3. Informed Consent",
+                            content:
+                                "By proceeding with an online consultation, the patient acknowledges and consents to receive homeopathic treatment in a remote format. The patient understands the limitations of teleconsultation and agrees to follow medical advice, including a recommendation to seek in-person evaluation if necessary. A consent form may be required before initiating the consultation process.",
+                        },
+                        {
+                            title: "4. Payments & Refunds",
                             content: (
-                                <ul className="list-disc pl-5 space-y-1">
+                                <ul className="list-disc pl-5 space-y-1 text-gray-700">
                                     <li>
-                                        You must provide accurate and complete
-                                        personal and medical information when
-                                        booking appointments.
+                                        All payments are processed securely via trusted third-party gateways such as Razorpay, Instamojo, etc.
                                     </li>
                                     <li>
-                                        You agree not to misuse the platform or
-                                        engage in any activity that disrupts the
-                                        app’s services.
+                                        Consultation charges are non-refundable once the case-taking has started.
+                                    </li>
+                                    <li>
+                                        Refunds for medicines are possible only if the remedy has not yet been prepared or dispatched.
+                                    </li>
+                                    <li>
+                                        In the case of technical errors (e.g., payment deducted but not received), eligible refunds will be processed within 7–10 working days after verification.
                                     </li>
                                 </ul>
                             ),
                         },
                         {
-                            title: "4. Appointments and Cancellations",
+                            title: "5. Data Privacy & Security",
                             content:
-                                "Patients are expected to arrive on time for scheduled appointments. Cancellations must be made at least 24 hours in advance. Repeated no-shows may result in suspension of booking privileges.",
+                                "We are committed to protecting your personal and medical data and ensuring confidentiality at all times. Information shared by patients is used solely for treatment purposes and is stored securely in compliance with Indian data protection laws and IT Act (2000). We do not share, sell, or distribute patient data to third parties without explicit consent, except where required by law. Secure platforms are used for video consultations, medical records, and online payments. Patients are advised to avoid using public or unsecured networks while accessing services.",
                         },
                         {
-                            title: "5. Privacy and Data Security",
+                            title: "6. Limitation of Liability",
                             content:
-                                "We are committed to protecting your personal and medical information. Please refer to our Privacy Policy to understand how we collect, use, and safeguard your data.",
+                                "Homeopathic remedies are natural, gentle, and non-toxic. In rare cases, a temporary aggravation of symptoms may occur, which is a natural part of the healing response in classical homeopathy. This is not an adverse reaction. If any discomfort or unusual change occurs, do not stop the remedy on your own. Contact the doctor immediately for guidance. Upasna Homoeo is not responsible for outcomes arising from misuse of medicines, discontinuation of treatment without consultation, or third-party misinterpretation of the advice given.",
                         },
                         {
-                            title: "6. Changes to Terms",
+                            title: "7. Governing Law & Jurisdiction",
                             content:
-                                "Upasana Homoeo reserves the right to modify or replace these terms at any time. We will provide notice of significant changes. Continued use of the service after changes constitutes acceptance of the new terms.",
+                                "These terms are governed by the laws of India, including the Central Council of Homoeopathy (CCH) guidelines, the Ministry of AYUSH, and RBI and Information Technology (IT) Act (2000) standards for digital transactions and data. Any disputes arising out of these services shall be subject to the exclusive jurisdiction of courts in Ajmer, Rajasthan, India.",
                         },
                         {
-                            title: "7. Contact Us",
+                            title: "8. Contact Us",
                             content: (
                                 <p>
-                                    If you have any questions about these Terms
-                                    and Conditions, please contact us at{" "}
+                                    For any questions or concerns regarding these Terms and Conditions:
+                                    <br />
+                                    Email:{" "}
                                     <a
-                                        href="mailto:upasanahomoeo@example.com"
+                                        href="mailto:upasnahomeo@gmail.com"
                                         className="text-blue-600 underline"
                                     >
                                         upasnahomeo@gmail.com
                                     </a>
-                                    .
+                                    <br />
+                                    Phone:{" "}
+                                    <a href="tel:+919468811004" className="text-blue-600 underline">
+                                        9468811004
+                                    </a>
+                                    <br />
+                                    Clinic: Upasna Homoeo, BihariGanj, Ajmer, Rajasthan, 305001
                                 </p>
                             ),
                         },

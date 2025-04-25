@@ -97,11 +97,11 @@ const ContactPage = () => {
                                 <h3 className="text-lg font-semibold text-[#0C6170] text-center">
                                     Clinic 1
                                 </h3>
-                                <address className="text-center">
-                                    123 Wellness Street, Health City, Delhi
+                                <address className="text-center mb-6">
+                                Bihari Ganj, Ajmer, Rajasthan 305001
                                 </address>
                                 <iframe
-                                    src={`https://www.google.com/maps/embed/v1/place?key=YOUR_GOOGLE_MAPS_API_KEY&q=123+Wellness+Street,+Health+City,+Delhi`}
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3572.833445964179!2d74.64663441195884!3d26.428850876842763!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396be18a18b0c4d5%3A0x5d79c96a25b887d4!2sDr%20Alok%20Verma!5e0!3m2!1sen!2sin!4v1745567206871!5m2!1sen!2sin"
                                     className="w-full h-64 border-2 border-[#0C6170] shadow-xl rounded-xl"
                                     loading="lazy"
                                     title="Clinic 1 Location"
@@ -114,10 +114,10 @@ const ContactPage = () => {
                                     Clinic 2
                                 </h3>
                                 <address className="text-center">
-                                    456 Care Lane, Medical Town, Mumbai
+                                Shop no.4, 364/46, Gandhi Nagar Rd, Naka Madar Colony, Gandhi Nagar, Ajmer, Rajasthan 305001
                                 </address>
                                 <iframe
-                                    src={`https://www.google.com/maps/embed/v1/place?key=YOUR_GOOGLE_MAPS_API_KEY&q=456+Care+Lane,+Medical+Town,+Mumbai`}
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3572.0943652093265!2d74.6685368!3d26.452686999999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396be70e708410fb%3A0x9ff3c50742659498!2sAbhinav%20Homoeo%20Clinic!5e0!3m2!1sen!2sin!4v1745567370539!5m2!1sen!2sin"
                                     className="w-full h-64 border-2 border-[#0C6170] shadow-xl rounded-xl"
                                     loading="lazy"
                                     title="Clinic 2 Location"

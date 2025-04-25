@@ -52,7 +52,8 @@ export default function Footer() {
           <ul className="mt-4 space-y-2 text-sm">
             <li className="flex items-center gap-2"><FaPhoneAlt /> +91 94688 11004</li>
             <li className="flex items-center gap-2"><MdEmail /> upasnahomeo@gmail.com</li>
-            <li className="flex items-center gap-2"><IoLocationSharp /> 123 Clinic Street, City, India</li>
+            <li className="flex items-center gap-2"><IoLocationSharp /> Bihari Ganj, Ajmer, Rajasthan 305001
+            </li>
           </ul>
         </div>
       </div>

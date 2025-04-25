@@ -74,7 +74,7 @@ const HeroSection = () => {
                 >
                     Welcome to{" "}
                     <span className="text-[#0C6170] font-bold dark:text-white">
-                        Upasna Homoeo
+                        Upasana Homoeo
                     </span>
                 </motion.h1>
 

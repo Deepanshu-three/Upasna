@@ -11,14 +11,7 @@ import {
     DropdownMenuItem,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import {
-    ChevronDown,
-    User,
-    LogOut,
-
-    Menu,
-    X,
-} from "lucide-react";
+import { ChevronDown, User, LogOut, Menu, X } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 
 type navlinkType = {
@@ -63,12 +56,14 @@ const Navbar = () => {
             <div className="w-full container mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8 md:h-20 h-16">
                 {/* logo */}
                 <div className="flex items-center gap-1 cursor-pointer">
-                    <div className="font-bold text-2xl text-[#0C6170] ">
-                        Upasana
-                    </div>
-                    <div className="font-medium text-2xl text-[#37BEB0]">
-                        Homoeo
-                    </div>
+                    <Link href={"/"}>
+                        <span className="font-bold text-2xl text-[#0C6170] ">
+                            Upasana
+                        </span>
+                        <span className="font-medium text-2xl text-[#37BEB0]">
+                            Homoeo
+                        </span>
+                    </Link>
                 </div>
 
                 {/* mobile menu button */}
@@ -118,7 +113,7 @@ const Navbar = () => {
                                     </Link>
                                     <Link href={"/popupcontact"}>
                                         <Button className="cursor-pointer">
-                                           Popup contact
+                                            Popup contact
                                         </Button>
                                     </Link>
                                 </div>
@@ -269,11 +264,11 @@ const Navbar = () => {
                                         <button
                                             className="flex items-center gap-3 mt-3 px-4 py-2 rounded-lg text-red-500 hover:bg-red-700 hover:text-white transition-all duration-200"
                                             onClick={() => {
-                                                signOut({ callbackUrl: "/" }).then(
-                                                    () => {
-                                                        window.location.href = "/";
-                                                    }
-                                                );
+                                                signOut({
+                                                    callbackUrl: "/",
+                                                }).then(() => {
+                                                    window.location.href = "/";
+                                                });
                                             }}
                                         >
                                             Logout
