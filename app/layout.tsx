@@ -13,7 +13,7 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-    title: "Your Website Name | Best Services Online",
+    title: "Upasana Homoeo | Best Services Online",
     description: "Welcome to Your Website - Offering the best services and products tailored for you.",
     keywords: ["Your Website", "Services", "Products", "Online Platform"],
     authors: [{ name: "Your Name" }],

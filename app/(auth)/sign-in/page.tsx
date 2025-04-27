@@ -2,6 +2,9 @@ import { auth, signIn } from "@/auth";
 import { Button } from "@/components/ui/button";
 import { redirect } from "next/navigation";
 
+// SEO and metadata
+import Head from "next/head";
+
 export default async function SignIn() {
     const user = await auth();
 
@@ -10,42 +13,64 @@ export default async function SignIn() {
     }
 
     return (
-        <section className="min-h-screen flex items-center justify-center px-4 py-12">
-            <div className="flex flex-col items-center justify-center w-full max-w-xl text-center gap-10">
-                {/* Header Text */}
+        <>
+            <Head>
+                <title>Sign In | Upasna Homoeo</title>
+                <meta
+                    name="description"
+                    content="Sign in to Upasna Homoeo using your Google account to access personalized homeopathy services."
+                />
+                <meta
+                    name="keywords"
+                    content="Sign in, Google login, Upasna Homoeo, homeopathy, online consultation"
+                />
+                <meta property="og:title" content="Sign In | Upasna Homoeo" />
+                <meta
+                    property="og:description"
+                    content="Sign in to Upasna Homoeo using your Google account to access personalized homeopathy services."
+                />
+                <meta property="og:image" content="/path-to-your-og-image.jpg" />
+                <meta property="og:url" content="https://upasanahomoeo.com/signin" />
+                <meta name="robots" content="noindex, nofollow" />
+                <meta name="viewport" content="width=device-width, initial-scale=1" />
+                <link rel="icon" href="/favicon.ico" />
+            </Head>
 
-                {/* Sign In Card */}
-                <div className="w-full bg-white p-6 sm:p-8 rounded-xl border shadow">
-                    <div>
-                        <h1 className="text-3xl sm:text-4xl font-bold text-green-700 mb-4">
-                            Welcome to Upasna Homoeo
-                        </h1>
-                    </div>
-                    <h2 className="text-xl sm:text-2xl font-semibold text-green-600 mb-3">
-                        Sign in to continue
-                    </h2>
-                    <p className="text-gray-500 text-sm sm:text-base mb-6">
-                        Use your Google account to sign into Upasna Homoeo.
-                    </p>
+            <section className="min-h-screen flex items-center justify-center px-4 py-12">
+                <div className="flex flex-col items-center justify-center w-full max-w-xl text-center gap-10">
+                    {/* Sign In Card */}
+                    <div className="w-full bg-white p-6 sm:p-8 rounded-xl border shadow">
+                        <div>
+                            <h1 className="text-3xl sm:text-4xl font-bold text-green-700 mb-4">
+                                Welcome to Upasna Homoeo
+                            </h1>
+                        </div>
+                        <h2 className="text-xl sm:text-2xl font-semibold text-green-600 mb-3">
+                            Sign in to continue
+                        </h2>
+                        <p className="text-gray-500 text-sm sm:text-base mb-6">
+                            Use your Google account to sign into Upasna Homoeo.
+                        </p>
 
-                    <form
-                        action={async () => {
-                            "use server";
-                            await signIn("google");
-                        }}
-                    >
-                        <Button
-                            type="submit"
-                            className="cursor-pointer w-full py-4 sm:py-5 text-base sm:text-lg flex items-center justify-center gap-3 mb-4 
-    bg-black text-white hover:bg-neutral-800 transition-all duration-200"
+                        <form
+                            action={async () => {
+                                "use server";
+                                await signIn("google");
+                            }}
                         >
-                            <GoogleIcon className="w-5 h-5 sm:w-6 sm:h-6" />
-                            Sign in with Google
-                        </Button>
-                    </form>
+                            <Button
+                                type="submit"
+                                className="cursor-pointer w-full py-4 sm:py-5 text-base sm:text-lg flex items-center justify-center gap-3 mb-4 
+    bg-black text-white hover:bg-neutral-800 transition-all duration-200"
+                            >
+                                <GoogleIcon className="w-5 h-5 sm:w-6 sm:h-6" />
+                                Sign in with Google
+                            </Button>
+                        </form>
+                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
+        </>
     );
 }
 

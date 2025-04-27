@@ -22,11 +22,11 @@ export const metadata = {
     title: "Upasna Homoeo - Trusted Homeopathic Healing in Ajmer",
     description:
       "Upasna Homoeo provides expert, personalized homeopathic treatments. With 30+ years of experience and 500K+ happy patients, we’re here to help you heal naturally.",
-    url: "https://yourdomain.com", // Replace with actual domain
+    url: "https://upasanahomoeo.com", // Replace with actual domain
     siteName: "Upasna Homoeo",
     images: [
       {
-        url: "https://yourdomain.com/og-home.jpg", // Replace with hosted image
+        url: "https://upasanahomoeo.com/og-home.jpg", // Replace with hosted image
         width: 1200,
         height: 630,
         alt: "Upasna Homoeo Clinic",
