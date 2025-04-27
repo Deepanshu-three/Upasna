@@ -126,7 +126,7 @@ const WhyChoosePage = () => {
                             2+
                         </span>
                         <p className="text-base sm:text-lg text-gray-700 mt-2 text-center">
-                            Clinics in Multiple Cities
+                            Multiple clinics in City
                         </p>
                     </div>
                 </div>

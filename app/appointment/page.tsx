@@ -44,7 +44,7 @@ function Page() {
     const [selectedTime, setSelectedTime] = React.useState<string>("");
 
     const [promoCode, setPromoCode] = React.useState<string>("");
-    const [amount, setAmount] = React.useState<number>(500);
+    const [amount, setAmount] = React.useState<number>(100);
 
     const handleApplyPromoCode = async () => {
         startTransition(async () => {
