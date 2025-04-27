@@ -58,7 +58,7 @@ const Page = () => {
                             With over <strong>30 years</strong> of dedicated
                             service in the field of homeopathy, Dr. Alok Verma
                             has helped transform the lives of over{" "}
-                            <strong>20,000 patients</strong>. His expertise lies
+                            <strong>2,00,000 patients</strong>. His expertise lies
                             in combining traditional methods with deep patient
                             understanding and compassion.
                         </p>

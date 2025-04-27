@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { ChevronDown, User, LogOut, Menu, X } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
+import Image from "next/image";
 
 type navlinkType = {
     link: string;
@@ -55,16 +56,24 @@ const Navbar = () => {
         <nav className="fixed top0 left-0 right-0 bg-white/90 backdrop:blur-sm z-50 border-b border-gray-100 shadow-sm">
             <div className="w-full container mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8 md:h-20 h-16">
                 {/* logo */}
-                <div className="flex items-center gap-1 cursor-pointer">
-                    <Link href={"/"}>
-                        <span className="font-bold text-2xl text-[#0C6170] ">
-                            Upasana
+                    <Link href={"/"} className="flex items-center">
+                        <span>
+                            <Image
+                                height={60}
+                                width={60}
+                                src="/raw.png"
+                                alt="Logo"
+                            />
                         </span>
-                        <span className="font-medium text-2xl text-[#37BEB0]">
-                            Homoeo
-                        </span>
+                        <div className="flex flex-col -space-y-2">
+                            <span className="font-bold text-2xl text-[#0C6170] ">
+                                Upasana
+                            </span>
+                            <span className="font-medium text-2xl text-[#37BEB0]">
+                                Homoeo
+                            </span>
+                        </div>
                     </Link>
-                </div>
 
                 {/* mobile menu button */}
 

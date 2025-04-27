@@ -57,7 +57,7 @@ const allDisease: Record<string, DiseaseDetails> = {
       "Spongia Tosta – Dry, barking cough with a feeling of suffocation.",
       "Ipecacuanha – Persistent cough with difficulty in expectoration and nausea."
     ],
-    src: "/treatment/asthma.png"
+    src: "/treatment/lungs.png"
   },
   "vitiligo": {
     "description": "Vitiligo is a common health concern. This placeholder will be replaced with a condition-specific explanation.",
@@ -320,7 +320,7 @@ const DiseaseDetail: React.FC = () => {
   return (
     <section className="min-h-screen py-10 px-4 sm:px-6 md:px-12 lg:px-24">
       <div className="max-w-4xl mx-auto bg-white shadow-lg rounded-xl p-6 sm:p-10">
-        <h1 className="text-3xl sm:text-4xl font-semibold text-teal-600 capitalize text-center mb-6">
+        <h1 className="text-3xl sm:text-4xl font-semibold text-teal-600 uppercase text-center mb-6">
           {disease.replace(/-/g, " ")}
         </h1>
 
