@@ -13,6 +13,8 @@ import {
   FileHeart,
 } from "lucide-react";
 import { motion } from "framer-motion";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation"; // Import the useRouter hook
 
 interface Appointment {
   id: string;
@@ -32,15 +34,23 @@ export default function DashboardPage() {
   const [appointments, setAppointments] = useState<Appointment[]>([]);
   const [showAll, setShowAll] = useState(false);
   const [openDetails, setOpenDetails] = useState<{ [key: string]: boolean }>({});
+  
+  const { data: session } = useSession(); // Retrieve session data
+  const router = useRouter(); // Use the router hook
 
   useEffect(() => {
-    const fetchData = async () => {
-      const res = await fetch("/api/appointments");
-      const data = await res.json();
-      setAppointments(data);
-    };
-    fetchData();
-  }, []);
+    // Redirect if the user is not an admin
+    if (!session || !session.user.isAdmin ) {
+      router.push("/"); // Redirect to a not-authorized page
+    } else {
+      const fetchData = async () => {
+        const res = await fetch("/api/appointments");
+        const data = await res.json();
+        setAppointments(data);
+      };
+      fetchData();
+    }
+  }, [session, router]); // Dependency array ensures this runs on session changes
 
   const today = new Date();
   const todayDateOnly = new Date(today.getFullYear(), today.getMonth(), today.getDate()).toDateString();
