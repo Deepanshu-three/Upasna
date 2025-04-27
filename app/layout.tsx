@@ -4,12 +4,31 @@ import Footer from "@/components/Footer";
 import { SessionProvider } from "next-auth/react";
 import { Toaster } from "@/components/ui/sonner";
 import { Poppins } from "next/font/google";
+import { Metadata } from "next";
 
 const poppins = Poppins({
     subsets: ["latin"],
     weight: ["300", "400", "500", "600", "700"],
     variable: "--font-poppins",
 });
+
+export const metadata: Metadata = {
+    title: "Your Website Name | Best Services Online",
+    description: "Welcome to Your Website - Offering the best services and products tailored for you.",
+    keywords: ["Your Website", "Services", "Products", "Online Platform"],
+    authors: [{ name: "Your Name" }],
+    viewport: "width=device-width, initial-scale=1",
+    icons: {
+      icon: "/favicon.ico", // Path to your favicon in the public directory
+      shortcut: "/favicon.ico", // Optional: for shortcut icon
+      apple: "/favicon.ico", // Optional: for Apple devices
+    },
+    themeColor: "#ffffff", // Define the theme color for browsers
+    robots: {
+      index: true,
+      follow: true,
+    },
+  };
 
 export default function RootLayout({
     children,
