@@ -160,6 +160,25 @@ function Page() {
         }
     };
 
+    const timings = [
+        "9:00 AM – 9:30 AM",
+        "9:30 AM – 10:00 AM",
+        "10:00 AM – 10:30 AM",
+        "10:30 AM – 11:00 AM",
+        "11:00 AM – 11:30 AM",
+        "11:30 AM – 12:00 PM",
+        "12:00 PM – 12:30 PM",
+        "12:30 PM – 1:00 PM",
+        "5:00 PM – 5:30 PM",
+        "5:30 PM – 6:00 PM",
+        "6:00 PM – 6:30 PM",
+        "6:30 PM – 7:00 PM",
+        "7:00 PM – 7:30 PM",
+        "7:30 PM – 8:00 PM",
+        "8:00 PM – 8:30 PM",
+        "8:30 PM – 9:00 PM",
+    ];
+
     return (
         <>
             <div className="min-h-screen flex flex-col items-center mt-10 p-4">
@@ -352,13 +371,7 @@ function Page() {
                                                             <SelectValue placeholder="Select Time Slot" />
                                                         </SelectTrigger>
                                                         <SelectContent>
-                                                            {[
-                                                                "9am - 10am",
-                                                                "11am - 12am",
-                                                                "1pm - 2pm",
-                                                                "3pm - 4pm",
-                                                                "5pm - 6pm",
-                                                            ].map((slot) => (
+                                                            {timings.map((slot) => (
                                                                 <SelectItem
                                                                     key={slot}
                                                                     value={slot}
