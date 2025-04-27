@@ -4,7 +4,7 @@ import React from "react";
 export const metadata = {
     title: "Why Choose Upasna Homoeo - Best Homeopathy Clinic in Ajmer",
     description:
-        "Discover why Upasna Homoeo is Ajmer's trusted homeopathy clinic with 30+ years of experience, expert doctors, and 500K+ happy patients.",
+        "Discover why Upasna Homoeo is Ajmer&apos;s trusted homeopathy clinic with 30+ years of experience, expert doctors, and 500K+ happy patients.",
     keywords: [
         "Homeopathy Clinic Ajmer",
         "Upasna Homoeo",
@@ -87,7 +87,7 @@ const WhyChoosePage = () => {
                     </h3>
                     <p className="text-base sm:text-lg md:text-xl text-gray-700 max-w-4xl">
                         Over 200,000 satisfied patients have experienced the
-                        clinic's care across 20+ states in India.
+                        clinic&apos;s care across 20+ states in India.
                     </p>
                 </div>
                 <div>
