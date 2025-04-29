@@ -64,7 +64,7 @@ const FAQs = () => {
       <div className="max-w-4xl mx-auto">
         <h1 className="text-4xl font-medium text-[#0C6170] text-center">FAQs</h1>
         <p className="text-lg text-gray-700 text-center">
-          Find answers to the most common questions about Afecto Homeopathy Clinic.
+          Find answers to the most common questions about Upasana Homoeopathy Clinic.
         </p>
 
         <motion.div

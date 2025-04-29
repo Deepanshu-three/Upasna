@@ -113,7 +113,7 @@ const HeroSection = () => {
                     <span className="hidden sm:inline text-gray-500">OR</span>
                     {isMobile ? (
                         <a
-                            href="tel:+919999999999"
+                            href="tel:+919468811004"
                             className="h-12 px-6 sm:px-8 text-base sm:text-lg rounded-lg shadow-md border border-[#0C6170] text-[#0C6170] hover:bg-[#0C6170] hover:text-white transition flex items-center justify-center min-w-[220px]"
                             aria-label="Call Upasna Homoeo Clinic"
                         >
