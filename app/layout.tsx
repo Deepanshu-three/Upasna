@@ -19,9 +19,9 @@ export const metadata: Metadata = {
     authors: [{ name: "Your Name" }],
     viewport: "width=device-width, initial-scale=1",
     icons: {
-      icon: "/favicon.ico", // Path to your favicon in the public directory
-      shortcut: "/favicon.ico", // Optional: for shortcut icon
-      apple: "/favicon.ico", // Optional: for Apple devices
+      icon: "/favicon.png", // Path to your favicon in the public directory
+      shortcut: "/favicon.png", // Optional: for shortcut icon
+      apple: "/favicon.png", // Optional: for Apple devices
     },
     themeColor: "#ffffff", // Define the theme color for browsers
     robots: {
