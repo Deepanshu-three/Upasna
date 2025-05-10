@@ -84,7 +84,7 @@ export default function Footer() {
 
       {/* Bottom Note */}
       <div className="max-w-7xl mx-auto mt-12 text-center text-sm text-gray-500">
-        <p>&copy; 2025 <span className="text-[#0C6170] font-medium">Upasana Homoe</span>. All rights reserved.</p>
+        <p>&copy; 2025 <span className="text-[#0C6170] font-medium">Upasana Homoeo</span>. All rights reserved.</p>
         <p className="mt-2">Developed with ❤️ by Upasana Homoeo Team</p>
       </div>
     </footer>

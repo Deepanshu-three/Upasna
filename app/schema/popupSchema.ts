@@ -12,7 +12,7 @@ export const popupSchema = z.object({
 
   phone: z
     .string()
-    .regex(/^\d{10}$/, {
-      message: "Phone number must be exactly 10 digits.",
+    .regex(/^\d{10,13}$/, {
+      message: "Phone number must be between 10 and 13 digits.",
     }),
 });

@@ -20,7 +20,7 @@ export const formSchema = z.object({
     .min(1, { message: "Gender is required." }),
   whatsAppNumber: z
     .string()
-    .regex(/^\d{10}$/, {
-      message: "WhatsApp number must be exactly 10 digits.",
+    .regex(/^\d{10,13}$/, {
+      message: "WhatsApp number must be between 10 and 13 digits.",
     }),
 });

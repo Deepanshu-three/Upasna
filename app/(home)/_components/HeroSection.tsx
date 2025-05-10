@@ -52,7 +52,7 @@ const HeroSection = () => {
     return (
         <section
             className="flex flex-col lg:flex-row items-center justify-between px-4 sm:px-8 lg:px-20 py-10 min-h-[90vh] gap-8 lg:gap-16"
-            aria-label="Upasna Homoeo Hero Section"
+            aria-label="Upasana Homoeo Hero Section"
         >
             {/* Left Section */}
             <motion.div
@@ -89,7 +89,7 @@ const HeroSection = () => {
                     className="text-base sm:text-lg text-[#0C6170] max-w-xl mx-auto lg:mx-0"
                     variants={fadeInUp}
                 >
-                    Experience holistic healing with natural remedies. At Upasna
+                    Experience holistic healing with natural remedies. At Upasana
                     Homoeo, we provide gentle, effective, and long-lasting
                     homeopathic treatments that stimulate your body&apos;s natural
                     defenses—without side effects.
@@ -103,7 +103,7 @@ const HeroSection = () => {
                     <Button
                         variant={"secondary"}
                         className="h-12 px-6 sm:px-8 text-base sm:text-lg rounded-lg shadow-md bg-[#0C6170] text-white hover:bg-[#04363d] cursor-pointer"
-                        aria-label="Book online appointment with Upasna Homoeo in Ajmer"
+                        aria-label="Book online appointment with Upasana Homoeo in Ajmer"
                         onClick={() => {
                             router.push("/appointment");
                         }}
@@ -115,7 +115,7 @@ const HeroSection = () => {
                         <a
                             href="tel:+919468811004"
                             className="h-12 px-6 sm:px-8 text-base sm:text-lg rounded-lg shadow-md border border-[#0C6170] text-[#0C6170] hover:bg-[#0C6170] hover:text-white transition flex items-center justify-center min-w-[220px]"
-                            aria-label="Call Upasna Homoeo Clinic"
+                            aria-label="Call Upasana Homoeo Clinic"
                         >
                             Call Now
                         </a>
@@ -137,7 +137,7 @@ const HeroSection = () => {
                                     className="absolute"
                                 >
                                     {showNumber
-                                        ? "+91 99999 99999"
+                                        ? "+91 9468811004"
                                         : "Call"}
                                 </motion.span>
                             </AnimatePresence>
