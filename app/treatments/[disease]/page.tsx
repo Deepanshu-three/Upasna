@@ -241,7 +241,7 @@ const allDisease: Record<string, DiseaseDetails> = {
     ],
     "src": "/treatment/gallstones.png"
   },
-  "kidney_stones": {
+  "kidney-stones": {
     "description": "Kidney Stones is a common health concern. This placeholder will be replaced with a condition-specific explanation.",
     "treatment": "Homeopathy offers a gentle and holistic approach by addressing the root cause and enhancing natural healing. It is safe, individualized, and effective for long-term relief.",
     "medicines": [

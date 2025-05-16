@@ -37,7 +37,7 @@ const allDisease = [
   {name: "warts", src: "/treatment/warts.png"},
   {name: "acne and pimple", src: "/treatment/acne_and_pimple.png"},
   {name: "adhd", src: "/treatment/adhd.png"},
-  {name: "galstones", src: "/treatment/gallstones.png"},
+  {name: "gallstones", src: "/treatment/gallstones.png"},
   {name: "kidney stones", src: "/treatment/kidney_stones.png"},
   {name: "menstrual problems", src: "treatment/manstrual.png"},
 ];
