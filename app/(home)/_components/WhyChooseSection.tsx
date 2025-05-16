@@ -2,33 +2,33 @@
 import React from "react";
 
 export const metadata = {
-    title: "Why Choose Upasna Homoeo - Best Homeopathy Clinic in Ajmer",
+  title: "Why Choose Upasna Homoeo | Trusted Homeopathy Clinic in Ajmer",
+  description:
+    "Explore what sets Upasna Homoeo apart — over 30 years of trusted homeopathic care in Ajmer, with expert doctors and 500K+ patients healed naturally.",
+  keywords: [
+    "Homeopathy Clinic Ajmer",
+    "Trusted Homeopathy Rajasthan",
+    "Upasna Homoeo Doctors",
+    "Natural Healing India",
+    "Best Homeopathy Ajmer",
+  ],
+  openGraph: {
+    title: "Why Choose Upasna Homoeo | Holistic Healing in Ajmer, Rajasthan",
     description:
-        "Discover why Upasna Homoeo is Ajmer&apos;s trusted homeopathy clinic with 30+ years of experience, expert doctors, and 500K+ happy patients.",
-    keywords: [
-        "Homeopathy Clinic Ajmer",
-        "Upasna Homoeo",
-        "Best Homeopathy in Rajasthan",
-        "Natural Healing Ajmer",
-        "Homeopathy Treatment India",
+      "Experience natural healing backed by 30+ years of care. Discover why 500K+ patients trust Upasna Homoeo in Ajmer for expert homeopathic treatment.",
+    url: "https://www.upasanahomoeo.com/why-choose-us", // ✅ Updated actual domain
+    siteName: "Upasna Homoeo",
+    images: [
+      {
+        url: "https://www.upasanahomoeo.com/images/why-choose-og.jpg", // ✅ Replace with real hosted image
+        width: 1200,
+        height: 630,
+        alt: "Dr. Alok Verma - Upasna Homoeo Clinic in Ajmer",
+      },
     ],
-    openGraph: {
-        title: "Upasna Homoeo - Natural Healing in Ajmer",
-        description:
-            "Expert homeopathic treatment with 30+ years of experience. Treating 500K+ patients naturally at Upasna Homoeo.",
-        url: "https://yourdomain.com/why-choose", // Replace with actual domain
-        siteName: "Upasna Homoeo",
-        images: [
-            {
-                url: "https://yourdomain.com/og-image.jpg", // Replace with actual hosted image
-                width: 1200,
-                height: 630,
-                alt: "Upasna Homoeo Clinic",
-            },
-        ],
-        locale: "en_US",
-        type: "website",
-    },
+    locale: "en_US",
+    type: "website",
+  },
 };
 
 const WhyChoosePage = () => {

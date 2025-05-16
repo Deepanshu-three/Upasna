@@ -6,36 +6,37 @@ import HomePopup from '@/components/HomePopUp';
 
 // SEO metadata for the home page
 export const metadata = {
-  title: "Upasna Homoeo - Best Homeopathy Clinic in Ajmer",
+  title: "Upasna Homoeo – Best Homeopathy Clinic in Ajmer for Natural Healing",
   description:
-    "Welcome to Upasna Homoeo, Ajmer’s trusted homeopathy clinic. Over 30+ years of natural healing experience and 500K+ satisfied patients. Book your consultation today.",
+    "Get expert homeopathic care at Upasna Homoeo, Ajmer. 30+ years of experience, 500K+ patients healed. Book an appointment today for natural, personalized treatment.",
   keywords: [
     "Homeopathy Clinic Ajmer",
     "Upasna Homoeo",
-    "Natural Healing",
-    "Chronic Disease Treatment",
-    "Homeopathic Doctor in Ajmer",
-    "Best Homeopathy in Rajasthan",
-    "500K+ Patients Treated",
+    "Natural Healing Ajmer",
+    "Homeopathy Rajasthan",
+    "Homeopathic Doctor Ajmer",
+    "Chronic Disease Homeopathy",
+    "Trusted Homeopathy India",
   ],
   openGraph: {
-    title: "Upasna Homoeo - Trusted Homeopathic Healing in Ajmer",
+    title: "Upasna Homoeo | Ajmer’s Leading Homeopathy Clinic for Chronic Healing",
     description:
-      "Upasna Homoeo provides expert, personalized homeopathic treatments. With 30+ years of experience and 500K+ happy patients, we’re here to help you heal naturally.",
-    url: "https://upasanahomoeo.com", // Replace with actual domain
+      "Join 500K+ patients who trust Upasna Homoeo in Ajmer for effective, compassionate homeopathic treatment backed by 30+ years of healing experience.",
+    url: "https://www.upasanahomoeo.com",
     siteName: "Upasna Homoeo",
     images: [
       {
-        url: "https://upasanahomoeo.com/og-home.jpg", // Replace with hosted image
+        url: "https://www.upasanahomoeo.com/images/og-home.jpg", // ✅ Make sure this is hosted
         width: 1200,
         height: 630,
-        alt: "Upasna Homoeo Clinic",
+        alt: "Upasna Homoeo - Homeopathy Clinic in Ajmer",
       },
     ],
     locale: "en_US",
     type: "website",
   },
 };
+
 
 const Home = () => {
   return (

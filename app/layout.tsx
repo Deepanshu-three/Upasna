@@ -13,7 +13,7 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-    title: "Upasana Homoeo | Best Services Online",
+    title: "Upasana Homoeo | One of the best homoropathic solution in ajmer rajasthan",
     description: "Welcome to Your Website - Offering the best services and products tailored for you.",
     keywords: ["Your Website", "Services", "Products", "Online Platform"],
     authors: [{ name: "Your Name" }],
