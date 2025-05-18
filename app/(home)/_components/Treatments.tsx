@@ -80,13 +80,13 @@ const Treatments = () => {
       >
         <header className="text-center space-y-8 px-4">
           <h1 className="text-2xl sm:text-3xl font-bold text-[#37BEB0]">
-            Treatments at Upasna Homoeo Clinic – Ajmer, Rajasthan
+            Treatments at Upasna Homoeo Clinic – Ajmer, India
           </h1>
           <h2 className="text-[#0C6170] text-3xl sm:text-4xl md:text-5xl font-medium">
             Natural Homeopathy Solutions for 100+ Diseases
           </h2>
           <p className="text-gray-700 mx-auto text-base sm:text-lg md:text-xl max-w-4xl">
-            Upasna Homoeo Clinic in Ajmer, Rajasthan, offers expert homeopathic care
+            Upasna Homoeo Clinic in Ajmer, India, offers expert homeopathic care
             for Asthma, Arthritis, PCOD, Migraine, Liver Conditions, and many other
             chronic and lifestyle-related diseases. Our remedies are non-toxic, safe,
             and tailored to your unique health needs.

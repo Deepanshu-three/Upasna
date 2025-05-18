@@ -7,13 +7,13 @@ export const metadata = {
     "Explore what sets Upasna Homoeo apart — over 30 years of trusted homeopathic care in Ajmer, with expert doctors and 500K+ patients healed naturally.",
   keywords: [
     "Homeopathy Clinic Ajmer",
-    "Trusted Homeopathy Rajasthan",
+    "Trusted Homeopathy India",
     "Upasna Homoeo Doctors",
     "Natural Healing India",
     "Best Homeopathy Ajmer",
   ],
   openGraph: {
-    title: "Why Choose Upasna Homoeo | Holistic Healing in Ajmer, Rajasthan",
+    title: "Why Choose Upasna Homoeo | Holistic Healing in Ajmer, India",
     description:
       "Experience natural healing backed by 30+ years of care. Discover why 500K+ patients trust Upasna Homoeo in Ajmer for expert homeopathic treatment.",
     url: "https://www.upasanahomoeo.com/why-choose-us", // ✅ Updated actual domain

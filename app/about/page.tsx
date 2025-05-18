@@ -19,7 +19,7 @@ const Page = () => {
         />
         <meta
           name="keywords"
-          content="Upasna Homoeo Ajmer, Dr. Alok Verma, Homeopathy Excellence, Trusted Homeopathy Rajasthan, Natural Healing Clinic, Patient Testimonials"
+          content="Upasna Homoeo Ajmer, Dr. Alok Verma, Homeopathy Excellence, Trusted Homeopathy India, Natural Healing Clinic, Patient Testimonials"
         />
         <meta name="author" content="Upasna Homoeo Clinic" />
 
@@ -49,7 +49,7 @@ const Page = () => {
         />
         <meta
           name="twitter:description"
-          content="See why Upasna Homoeo is a preferred choice for natural and personalized care across Rajasthan. 30+ years of success in chronic disease treatment."
+          content="See why Upasna Homoeo is a preferred choice for natural and personalized care across India. 30+ years of success in chronic disease treatment."
         />
         <meta
           name="twitter:image"

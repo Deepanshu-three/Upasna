@@ -93,7 +93,7 @@ const TermsAndConditionsPage = () => {
                         {
                             title: "7. Governing Law & Jurisdiction",
                             content:
-                                "These terms are governed by the laws of India, including the Central Council of Homoeopathy (CCH) guidelines, the Ministry of AYUSH, and RBI and Information Technology (IT) Act (2000) standards for digital transactions and data. Any disputes arising out of these services shall be subject to the exclusive jurisdiction of courts in Ajmer, Rajasthan, India.",
+                                "These terms are governed by the laws of India, including the Central Council of Homoeopathy (CCH) guidelines, the Ministry of AYUSH, and RBI and Information Technology (IT) Act (2000) standards for digital transactions and data. Any disputes arising out of these services shall be subject to the exclusive jurisdiction of courts in Ajmer, India, India.",
                         },
                         {
                             title: "8. Contact Us",
@@ -114,7 +114,7 @@ const TermsAndConditionsPage = () => {
                                         9468811004
                                     </a>
                                     <br />
-                                    Clinic: Upasna Homoeo, BihariGanj, Ajmer, Rajasthan, 305001
+                                    Clinic: Upasna Homoeo, BihariGanj, Ajmer, India, 305001
                                 </p>
                             ),
                         },

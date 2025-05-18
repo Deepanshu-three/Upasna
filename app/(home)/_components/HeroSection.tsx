@@ -82,7 +82,7 @@ const HeroSection = () => {
                     className="text-xl sm:text-2xl text-gray-500 font-semibold"
                     variants={fadeInUp}
                 >
-                    Trusted Homeopathy Clinic in Ajmer, Rajasthan
+                    Trusted Homeopathy Clinic in Ajmer, India
                 </motion.h2>
 
                 <motion.p

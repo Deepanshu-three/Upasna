@@ -6,14 +6,14 @@ import HomePopup from '@/components/HomePopUp';
 
 // SEO metadata for the home page
 export const metadata = {
-  title: "Upasna Homoeo – Best Homeopathy Clinic in Ajmer for Natural Healing",
+  title: "Upasna Homoeo – Best Homeopathy Clinic in India",
   description:
     "Get expert homeopathic care at Upasna Homoeo, Ajmer. 30+ years of experience, 500K+ patients healed. Book an appointment today for natural, personalized treatment.",
   keywords: [
     "Homeopathy Clinic Ajmer",
     "Upasna Homoeo",
     "Natural Healing Ajmer",
-    "Homeopathy Rajasthan",
+    "Homeopathy India",
     "Homeopathic Doctor Ajmer",
     "Chronic Disease Homeopathy",
     "Trusted Homeopathy India",

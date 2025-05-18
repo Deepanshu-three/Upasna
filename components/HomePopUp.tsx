@@ -68,13 +68,15 @@ const HomePopup = () => {
     <div className="fixed inset-0 bg-transparent flex items-center justify-center z-50 p-4 overflow-auto">
       {/* Transparent background without black overlay */}
       <div className="absolute inset-0 bg-transparent pointer-events-auto" />
-      
+
       <div className="relative bg-white w-full max-w-md p-6 rounded-2xl shadow-xl z-10">
-        <h2 className="text-2xl font-bold mb-4 text-center"> Get Instant Callback!</h2>
+        <h2 className="text-2xl font-bold mb-4 text-center">
+          {" "}
+          Get Instant Callback!
+        </h2>
         <p className="mb-4 text-center text-sm text-gray-600">
           Please fill out this short form.
         </p>
-
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
             <FormField
@@ -119,8 +121,17 @@ const HomePopup = () => {
               )}
             />
 
+            <p className="mb-2 text-center text-xs text-red-500">
+              <strong>Note:</strong> The information you provide will be shared
+              with our team to contact you.
+            </p>
+
             <div className="flex justify-end gap-2 pt-4">
-              <Button variant="secondary" type="button" onClick={() => setShowPopup(false)}>
+              <Button
+                variant="secondary"
+                type="button"
+                onClick={() => setShowPopup(false)}
+              >
                 Cancel
               </Button>
               <Button type="submit">Submit</Button>
